@@ -50,15 +50,24 @@ export class TransactionCreateEditComponent implements OnInit {
     if (this.transactionForm.valid) {
       if (this.transactionId) {
         this.transactions.putTransaction(this.transactionForm.value).subscribe({
-          next: () => this.router.navigate(['../']),
+          next: () => this.router.navigate(['/transacoes']),
+          error: () => {console.log('error');
+          }
         });
       } else {
         this.transactions
           .postTransaction(this.transactionForm.value)
           .subscribe({
-            next: () => this.router.navigate(['../']),
+            next: () => this.router.navigate(['/transacoes']),
+            error: () => {
+              console.log('error');
+            }
           });
       }
     }
+  }
+
+  cancel() {
+    this.router.navigate(['/transacoes'])
   }
 }

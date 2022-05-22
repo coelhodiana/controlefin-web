@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
 
 registerLocaleData(ptBr)
 
@@ -16,7 +17,8 @@ registerLocaleData(ptBr)
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   providers: [
     {provide: LOCALE_ID,
@@ -24,6 +26,6 @@ registerLocaleData(ptBr)
     },
     {provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL'}
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

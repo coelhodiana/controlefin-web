@@ -1,23 +1,50 @@
-<form [formGroup]="transactionForm">
-  <h1>
-    {{ transactionId ? "editar transação" : "novo registro de transação" }}
-  </h1>
-  <label for="valor">valor:</label>
-  <input type="number" name="valor" id="valor" formControlName="valor"/>
+<div class="container new-transaction">
+  <form [formGroup]="transactionForm">
+    <h1>
+      {{ transactionId ? "editar transação" : "novo registro de transação" }}
+    </h1>
 
-  <label for="descricao">descrição:</label>
-  <input
-    type="text"
-    name="descricao"
-    id="descricao"
-    formControlName="descricao"
-  />
+    <div class="new-transaction__inputs">
+      <div>
+        <label class="form-label" for="valor">valor:</label>
+        <input
+          class="form-control"
+          type="number"
+          name="valor"
+          id="valor"
+          formControlName="valor"
+        />
+      </div>
 
-  <label for="tipo">tipo:</label>
-  <select name="tipo" formControlName="tipo">
-    <option value="entrada" default>entrada</option>
-    <option value="saída">saída</option>
-  </select>
+      <div>
+        <label class="form-label" for="descricao">descrição:</label>
+        <input
+          class="form-control"
+          type="text"
+          name="descricao"
+          id="descricao"
+          formControlName="descricao"
+        />
+      </div>
 
-  <button type="submit" (click)="salvarTransacao()">salvar</button>
-</form>
+      <div>
+        <label class="form-label" for="tipo">tipo:</label>
+        <select class="form-select" name="tipo" formControlName="tipo">
+          <option value="entrada" default>entrada</option>
+          <option value="saída">saída</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="new-transaction__footer">
+      <button class="btn btn-light" type="submit" (click)="cancel()">
+        cancelar
+      </button>
+
+      <button class="btn btn-primary" type="submit" (click)="salvarTransacao()">
+        salvar
+      </button>
+    </div>
+
+  </form>
+</div>

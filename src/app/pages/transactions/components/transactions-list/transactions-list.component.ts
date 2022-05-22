@@ -21,6 +21,11 @@ export class TransactionsListComponent implements OnInit {
   }
 
   delete(id: number) {
-    this.transactions.deleteTransaction(id).subscribe();
+    this.transactions.deleteTransaction(id).subscribe({
+      next: () => {console.log('excluído');
+      },
+      error: () => {console.log('erro ao excluir');
+      }
+    });
   }
 }

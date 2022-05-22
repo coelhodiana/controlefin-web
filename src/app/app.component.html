@@ -1,5 +1,12 @@
-<nav>
-  <button routerLink="/">entrar</button>
-  <button routerLink="/transacoes">transações</button>
+<nav class="navbar bg-light navigation">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1">Navbar</span>
+    <div class="navigation__buttons">
+      <button class="btn btn-light" routerLink="/">
+        sair
+      </button>
+    </div>
+  </div>
 </nav>
+
 <router-outlet></router-outlet>

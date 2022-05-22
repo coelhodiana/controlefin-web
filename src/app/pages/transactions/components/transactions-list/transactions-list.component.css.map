@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,kBAAkB,CAAC;EACjB,UAAU,EAAE,IAAI;EAChB,aAAa,EAAE,IAAI;CAiBpB;;AAfE,AAAD,0BAAS,CAAC;EACR,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,aAAa;EAC9B,aAAa,EAAE,IAAI;CACpB;;AAEA,AAAD,2BAAU,CAAC;EACT,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,QAAQ;EACzB,GAAG,EAAE,IAAI;CACV;;AAEA,AAAD,0BAAS,CAAC;EACR,OAAO,EAAE,MAAM;CAChB",
+    "sources": [
+        "transactions-list.component.scss"
+    ],
+    "names": [],
+    "file": "transactions-list.component.css"
+}

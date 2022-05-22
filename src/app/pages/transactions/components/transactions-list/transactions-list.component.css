@@ -1,0 +1,29 @@
+.list-transactions {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.list-transactions__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.list-transactions__actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  gap: 1rem;
+}
+
+.list-transactions__button {
+  padding: 0 2rem;
+}
+/*# sourceMappingURL=transactions-list.component.css.map */
