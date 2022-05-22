@@ -1,0 +1,34 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "valor": 10,
+      "descricao": "Bolo de pote",
+      "tipo": "saída"
+    },
+    {
+      "id": 5,
+      "valor": 42,
+      "descricao": "patê de cachorro",
+      "tipo": "saída"
+    },
+    {
+      "id": 7,
+      "valor": 24.99,
+      "descricao": "jogo stardew valley",
+      "tipo": "saída"
+    },
+    {
+      "id": 8,
+      "valor": 199,
+      "descricao": "gamepad 8bit",
+      "tipo": "saída"
+    },
+    {
+      "id": 9,
+      "valor": 13,
+      "descricao": "revista",
+      "tipo": "saída"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+<form [formGroup]="transactionForm">
+  <h1>
+    {{ transactionId ? "editar transação" : "novo registro de transação" }}
+  </h1>
+  <label for="valor">valor:</label>
+  <input type="number" name="valor" id="valor" formControlName="valor"/>
+
+  <label for="descricao">descrição:</label>
+  <input
+    type="text"
+    name="descricao"
+    id="descricao"
+    formControlName="descricao"
+  />
+
+  <label for="tipo">tipo:</label>
+  <select name="tipo" formControlName="tipo">
+    <option value="entrada" default>entrada</option>
+    <option value="saída">saída</option>
+  </select>
+
+  <button type="submit" (click)="salvarTransacao()">salvar</button>
+</form>

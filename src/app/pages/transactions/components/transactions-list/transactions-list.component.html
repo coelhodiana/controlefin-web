@@ -1,0 +1,15 @@
+<button routerLink="nova-transacao">nova transação</button>
+  <ul *ngIf="transactionsList; else erro" class="lista">
+    <li *ngFor="let transaction of transactionsList" class="lista__item">
+      <p>{{ transaction.id }}</p>
+      <p>{{ transaction.valor | currency: "BRL" }}</p>
+      <p>{{ transaction.descricao }}</p>
+      <p>{{ transaction.tipo }}</p>
+      <button [routerLink]="['editar', transaction.id]">editar</button>
+      <button (click)="delete(transaction.id )">excluir</button>
+    </li>
+  </ul>
+
+  <ng-template #erro>
+    <p>Ainda não existem transações...</p>
+  </ng-template>
