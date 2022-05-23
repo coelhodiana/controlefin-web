@@ -1,0 +1,16 @@
+<div class="">
+  <div
+    class="toasty"
+    [class.green]="notification.type.type === 'success'"
+    [class.red]="notification.type.type === 'error'"
+    *ngFor="let notification of notifications"
+  >
+    <div class="toasty__body">
+      <i class="{{ notification.type.icon }}"></i>
+      <p>{{ notification.message }}</p>
+    </div>
+    <button type="button" class="btn botao" (click)="dismiss(notification)">
+      ok
+    </button>
+  </div>
+</div>

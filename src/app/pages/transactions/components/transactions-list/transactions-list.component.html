@@ -14,6 +14,7 @@
         <td>id</td>
         <td>valor</td>
         <td>descrição</td>
+        <td>data</td>
         <td>tipo</td>
         <td class="list-transactions__actions">ações</td>
       </tr>
@@ -23,6 +24,7 @@
         <td>{{ transaction.id }}</td>
         <td>{{ transaction.valor | currency: "BRL" }}</td>
         <td>{{ transaction.descricao }}</td>
+        <td>{{ transaction.data | date }}</td>
         <td>{{ transaction.tipo }}</td>
         <td class="list-transactions__actions">
           <button

@@ -3,4 +3,8 @@
     display: flex;
     gap: 1rem;
   }
+
+  &__brand {
+    cursor: pointer;
+  }
 }
