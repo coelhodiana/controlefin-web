@@ -69,6 +69,13 @@
       "descricao": "Freela Marca",
       "tipo": "saída",
       "data": "2022-05-24"
+    },
+    {
+      "id": 19,
+      "valor": 68,
+      "descricao": "Mercado Pátio Gourmet",
+      "tipo": "saída",
+      "data": "2022-05-24"
     }
   ]
 }
