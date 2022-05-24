@@ -8,7 +8,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'transacoes',
+    path: '/transacoes',
     loadChildren: () => import('./pages/transactions/transactions.module').then(m=>m.TransactionsModule)
   }
 ];
