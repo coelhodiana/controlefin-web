@@ -20,10 +20,10 @@
   }
 }
 
-.green {
-  background-color: green;
+.success {
+  background-color: map-get($theme-colors, "green");
 }
 
-.red {
-  background-color: red;
+.error {
+  background-color: $red;
 }
