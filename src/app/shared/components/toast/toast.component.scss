@@ -1,0 +1,29 @@
+.toasty {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: absolute;
+  z-index: 999;
+  background-color: white;
+  color: white;
+
+  &__body {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.green {
+  background-color: green;
+}
+
+.red {
+  background-color: red;
+}

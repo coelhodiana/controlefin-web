@@ -1,11 +1,14 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 
+import { ToastService } from './../../../../shared/components/toast/service/toast.service';
 import { TransactionsService } from './../../services/transactions.service';
+import { TransactionsComponent } from './../../transactions.component';
 import { TransactionCreateEditComponent } from './transaction-create-edit.component';
 
 const transactionsMock: any = [
@@ -14,12 +17,14 @@ const transactionsMock: any = [
     valor: 10,
     descricao: 'Bolo de pote',
     tipo: 'saída',
+    data: '2022-05-23',
   },
   {
     id: 3,
     valor: 4.5,
     descricao: 'mentos',
     tipo: 'saída',
+    data: '2022-05-23',
   },
 ];
 
@@ -41,12 +46,19 @@ describe('TransactionCreateEditComponent', () => {
   let component: TransactionCreateEditComponent;
   let fixture: ComponentFixture<TransactionCreateEditComponent>;
   let service: TransactionsService;
+  let toast: ToastService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      schemas: [NO_ERRORS_SCHEMA],
       imports: [
         ReactiveFormsModule,
-        RouterTestingModule,
+        RouterTestingModule.withRoutes([
+          {
+            path: 'transacoes',
+            component: TransactionsComponent
+          }
+        ]),
         HttpClientTestingModule,
       ],
       declarations: [TransactionCreateEditComponent],
@@ -56,6 +68,9 @@ describe('TransactionCreateEditComponent', () => {
           provide: ActivatedRoute,
           useValue: { snapshot: { params: { id: 1 } } },
         },
+        {
+          provide: ToastService, useValue: {notify: ()=>{}}
+        },
       ],
     }).compileComponents();
   });
@@ -64,6 +79,7 @@ describe('TransactionCreateEditComponent', () => {
     fixture = TestBed.createComponent(TransactionCreateEditComponent);
     component = fixture.componentInstance;
     service = TestBed.inject(TransactionsService);
+    toast = TestBed.inject(ToastService)
     fixture.detectChanges();
   });
 
@@ -72,35 +88,19 @@ describe('TransactionCreateEditComponent', () => {
   });
 
   it('should call ngOnInit', () => {
-    const formMock = {
-      id: 1,
-      valor: 10,
-      descricao: 'Bolo de pote',
-      tipo: 'saída',
-    };
-
     component.ngOnInit();
 
     component.transactionId = 1;
 
-    component.transactionForm.patchValue({ ...formMock });
+    component.transactionForm.patchValue({ ...transactionsMock[0] });
 
-    expect(component.transactionForm.value).toStrictEqual(formMock);
+    expect(component.transactionForm.value).toStrictEqual(transactionsMock[0]);
   });
 
   it('should call loadTransaction', () => {
-    const returnMock = [
-      {
-        id: 1,
-        valor: 10,
-        descricao: 'Bolo de pote',
-        tipo: 'saída',
-      },
-    ];
-
     const serviceSpy = jest
       .spyOn(service, 'getTransaction')
-      .mockReturnValue(of(returnMock));
+      .mockReturnValue(of(transactionsMock[0]));
 
     component.loadTransaction(1);
 
@@ -109,20 +109,28 @@ describe('TransactionCreateEditComponent', () => {
 
   it('should call postTransaction', () => {
     component.transactionId = null;
-    const returnMock = [
-      {
-        id: 1,
-        valor: 10,
-        descricao: 'Bolo de pote',
-        tipo: 'saída',
-      },
-    ];
 
-    component.transactionForm.patchValue({ ...returnMock[0] });
+    component.transactionForm.patchValue({ ...transactionsMock[0] });
 
     const serviceSpy = jest
       .spyOn(service, 'postTransaction')
-      .mockReturnValue(of(returnMock));
+      .mockReturnValue(of(transactionsMock[0]));
+
+    component.salvarTransacao();
+
+    expect(component.transactionId).toBeNull();
+    expect(component.transactionForm.valid).toBeTruthy();
+    expect(serviceSpy).toHaveBeenCalled();
+  });
+
+  it('should call postTransaction with error', () => {
+    component.transactionId = null;
+
+    component.transactionForm.patchValue({ ...transactionsMock[0] });
+
+    const serviceSpy = jest
+      .spyOn(service, 'postTransaction')
+      .mockReturnValue(throwError({}));
 
     component.salvarTransacao();
 
@@ -132,25 +140,49 @@ describe('TransactionCreateEditComponent', () => {
   });
 
   it('should call putTransaction', () => {
-    const returnMock = [
-      {
-        id: 1,
-        valor: 10,
-        descricao: 'Bolo de pote',
-        tipo: 'saída',
-      },
-    ];
     component.transactionId = 1;
-    component.transactionForm.patchValue({ ...returnMock[0] });
+    component.transactionForm.patchValue({ ...transactionsMock[0] });
+
+    const toastSpy = jest.spyOn(toast, 'notify');
 
     const servicoSpy = jest
       .spyOn(service, 'putTransaction')
-      .mockReturnValue(of(returnMock));
+      .mockReturnValue(of(transactionsMock[0]));
 
     component.salvarTransacao();
 
     expect(component.transactionId).toEqual(1);
     expect(component.transactionForm.valid).toBeTruthy();
     expect(servicoSpy).toHaveBeenCalled();
+    expect(toastSpy).toHaveBeenCalled();
+  });
+
+  it('should call putTransaction with error', () => {
+    component.transactionId = 1;
+    component.transactionForm.patchValue({ ...transactionsMock[0] });
+
+    const toastSpy = jest.spyOn(toast, 'notify');
+
+    const servicoSpy = jest
+      .spyOn(service, 'putTransaction')
+      .mockReturnValue(throwError({}));
+
+    component.salvarTransacao();
+
+    expect(component.transactionId).toEqual(1);
+    expect(component.transactionForm.valid).toBeTruthy();
+    expect(servicoSpy).toHaveBeenCalled();
+    expect(toastSpy).toHaveBeenCalled();
+  });
+
+  it('Should call cancel', () => {
+    const routerMock = TestBed.inject(Router)
+    const routeSpy = jest.spyOn(routerMock, 'navigate').mockResolvedValue(true);
+    // const cancelSpy = jest.spyOn(component, 'cancel');
+
+    component.cancel();
+
+    // expect(cancelSpy).toHaveBeenCalled();
+    expect(routeSpy).toHaveBeenCalled();
   });
 });

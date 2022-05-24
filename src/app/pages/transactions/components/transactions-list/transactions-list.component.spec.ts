@@ -1,7 +1,9 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Observable, of } from 'rxjs';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Observable, of, throwError } from 'rxjs';
 
+import { ToastService } from './../../../../shared/components/toast/service/toast.service';
 import { TransactionsService } from './../../services/transactions.service';
 import { TransactionsListComponent } from './transactions-list.component';
 
@@ -26,26 +28,30 @@ class MockTransctionsService {
   }
 
   deleteTransaction(id: number) {
-
+    return of(()=>{})
   }
 }
 
 describe('TransactionsListComponent', () => {
   let component: TransactionsListComponent;
+  let toast: ToastService;
   let fixture: ComponentFixture<TransactionsListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule],
       declarations: [TransactionsListComponent],
       providers: [
-        {provide: TransactionsService, useClass: MockTransctionsService}
+        {provide: TransactionsService, useClass: MockTransctionsService},
+        {provide: ToastService, useValue: {notify: ()=>{}}}
+
       ],
     }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TransactionsListComponent);
+    toast = TestBed.inject(ToastService);
     component = fixture.componentInstance;
   });
 
@@ -73,11 +79,24 @@ describe('TransactionsListComponent', () => {
 
   it('should delete one transaction', () => {
     const serviceTransactions = TestBed.inject(TransactionsService);
-    const serviceSpy = jest.spyOn(serviceTransactions, 'deleteTransaction').mockReturnValue(of());
+    const serviceSpy = jest.spyOn(serviceTransactions, 'deleteTransaction');
+    const toastSpy = jest.spyOn(toast, 'notify');
 
     component.delete(1);
 
     expect(serviceSpy).toHaveBeenCalled();
+    expect(toastSpy).toHaveBeenCalled();
+  });
+
+  it('should try to delete and return error', () => {
+    const serviceTransactions = TestBed.inject(TransactionsService);
+    const serviceSpy = jest.spyOn(serviceTransactions, 'deleteTransaction').mockReturnValue(throwError({}));
+    const toastSpy = jest.spyOn(toast, 'notify');
+
+    component.delete(1);
+
+    expect(serviceSpy).toHaveBeenCalled();
+    expect(toastSpy).toHaveBeenCalled();
   })
 
 });

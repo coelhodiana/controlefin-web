@@ -1,15 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+import { ToastModule } from './components/toast/toast.module';
+
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    ToastModule
   ],
   declarations: [
   ],
-  providers: [
-
-  ],
+  exports: [
+    ToastModule
+  ]
 })
 export class SharedModule { }

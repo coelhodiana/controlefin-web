@@ -1,34 +1,74 @@
 {
   "transactions": [
     {
-      "id": 5,
-      "valor": 42,
-      "descricao": "patê de cachorro",
-      "tipo": "saída"
-    },
-    {
       "id": 7,
-      "valor": 24.99,
-      "descricao": "jogo stardew valley",
-      "tipo": "saída"
+      "valor": 24.9,
+      "descricao": "jogo stardew valley steam",
+      "tipo": "saída",
+      "data": "2022-05-23"
     },
     {
       "id": 9,
       "valor": 13,
-      "descricao": "revista",
-      "tipo": "saída"
+      "descricao": "Revista Mundo Estranho",
+      "tipo": "saída",
+      "data": "2022-05-23"
     },
     {
-      "id": 10,
-      "valor": 2.99,
-      "descricao": "macarrão",
-      "tipo": "saída"
+      "id": 11,
+      "valor": 48,
+      "descricao": "e-book - Fogo e Sangue",
+      "tipo": "saída",
+      "data": "2022-05-23"
     },
     {
       "id": 12,
-      "valor": 14,
-      "descricao": "pão",
-      "tipo": "saída"
+      "valor": 2,
+      "descricao": "sorvete mc donald's",
+      "tipo": "saída",
+      "data": "2022-05-23"
+    },
+    {
+      "id": 13,
+      "valor": 15,
+      "descricao": "revista eletronica",
+      "tipo": "saída",
+      "data": "2022-05-23"
+    },
+    {
+      "id": 14,
+      "valor": 400,
+      "descricao": "Headset",
+      "tipo": "saída",
+      "data": "2022-05-23"
+    },
+    {
+      "id": 15,
+      "valor": 1500,
+      "descricao": "Freelance Marca",
+      "tipo": "entrada",
+      "data": "2022-05-23"
+    },
+    {
+      "id": 16,
+      "valor": 89.9,
+      "descricao": "Keldog Tapetes Higiênicos",
+      "tipo": "saída",
+      "data": "2022-05-23"
+    },
+    {
+      "id": 17,
+      "valor": 12.9,
+      "descricao": "pipicat",
+      "tipo": "saída",
+      "data": "2022-05-23"
+    },
+    {
+      "id": 18,
+      "valor": 400,
+      "descricao": "Freela Marca",
+      "tipo": "saída",
+      "data": "2022-05-24"
     }
   ]
 }
