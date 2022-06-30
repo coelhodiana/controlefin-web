@@ -2,3 +2,12 @@
   max-width: 1440px;
   margin: 0 auto;
 }
+
+.navbar {
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}

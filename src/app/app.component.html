@@ -13,12 +13,40 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link" routerLink="/dashboard">início</a>
-        <a class="nav-link" routerLink="/transacoes/nova-transacao"
-          >transações</a
-        >
-        <!-- <a class="nav-link" routerLink="/signin">sair</a> -->
+      <div class="navbar__buttons">
+        <div class="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                title="relatório"
+                routerLink="/dashboard"
+                >relatório</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                title="lista de transações"
+                routerLink="/transacoes"
+                >transações</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="navbar-nav">
+          <button
+            type="button"
+            class="btn btn-light"
+            title="editar transação"
+            routerLink="/signin"
+          >
+            sair
+            <i class="bi bi-box-arrow-right"></i>
+          </button>
+        </div>
       </div>
     </div>
   </div>
