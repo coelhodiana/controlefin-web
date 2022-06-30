@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+
+import { AuthService } from '../../../shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class SignInComponent {
   signForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private auth: AuthService) {
     this.signForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -18,8 +19,6 @@ export class SignInComponent {
   }
 
   signin() {
-    if (this.signForm.valid) {
-      this.router.navigate(['/transacoes'])
-    }
+    this.auth.login(this.signForm.value);
   }
 }

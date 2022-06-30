@@ -1,0 +1,45 @@
+<div class="card">
+  <div class="card-body">
+    <div class="header d-flex justify-content-between align-items-center mb-3">
+      <h5 class="card-title m-0">Transações</h5>
+      <div class="filters">
+        <div class="dropdown">
+          <button
+            class="btn btn-light dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            title="filtro"
+          >
+            <i class="bi bi-filter"></i>
+            {{ activeType }}
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" [class.active]="activeType === 'todas'" (click)="filterTransactionsList('todas')">todas</a></li>
+            <li><a class="dropdown-item" [class.active]="activeType === 'entrada'" (click)="filterTransactionsList('entrada')">entradas</a></li>
+            <li><a class="dropdown-item" [class.active]="activeType === 'saída'" (click)="filterTransactionsList('saída')">saídas</a></li>
+            <li><a class="dropdown-item" [class.active]="activeType === 'investimento'" (click)="filterTransactionsList('investimento')">investidos</a></li>
+            <li><a class="dropdown-item" [class.active]="activeType === 'cartão'" (click)="filterTransactionsList('cartão')">cartão</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div
+      *ngFor="let transaction of renderedTransactionsList | async"
+      class="transaction-item"
+    >
+      <div>
+        <p class="transaction-item__description">{{ transaction.description }}</p>
+        <p class="transaction-item__date">
+          <small>{{ transaction.date | date }}</small>
+        </p>
+      </div>
+      <div class="transaction-item__value">
+        <i class="bi bi-plus" *ngIf="transaction.type === 'entrada'"></i>
+        <i class="bi bi-dash" *ngIf="transaction.type === 'saída'"></i>
+        <p>{{ transaction.amount | currency }}</p>
+      </div>
+    </div>
+  </div>
+</div>

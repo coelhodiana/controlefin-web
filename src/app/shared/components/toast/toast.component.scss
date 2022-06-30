@@ -1,29 +1,11 @@
-.toasty {
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
+.toast-container {
+  right: 0;
+  top: 0;
   position: absolute;
-  z-index: 999;
-  background-color: white;
-  color: white;
-
-  &__body {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-
-    p {
-      margin-bottom: 0;
-    }
-  }
+  margin: 1rem;
+  z-index: 99;
 }
 
-.success {
-  background-color: #198754;
-}
-
-.error {
-  background-color: #dc3545;
+.toast {
+  display: block;
 }

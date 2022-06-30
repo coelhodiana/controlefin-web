@@ -1,16 +1,24 @@
-<div class="">
+<div class="toast-container" id="toastPlacement">
   <div
-    class="toasty"
-    [class.success]="notification.type.type === 'success'"
-    [class.error]="notification.type.type === 'error'"
+    class="toast align-items-center text-white bg-success"
+    data-bs-animation="true"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
     *ngFor="let notification of notifications"
   >
-    <div class="toasty__body">
-      <i class="{{ notification.type.icon }}"></i>
-      <p>{{ notification.message }}</p>
+    <div class="d-flex">
+      <div class="toast-body d-flex align-items-center">
+        <i class="{{ notification.type.icon }} flex-shrink-0 me-4"></i>
+        {{ notification.message }}
+      </div>
+      <button
+        type="button"
+        class="btn-close me-2 m-auto btn-close-white"
+        data-bs-dismiss="toast"
+        aria-label="Close"
+        (click)="dismiss(notification)"
+      ></button>
     </div>
-    <button type="button" class="btn botao text-white" (click)="dismiss(notification)">
-      ok
-    </button>
   </div>
 </div>

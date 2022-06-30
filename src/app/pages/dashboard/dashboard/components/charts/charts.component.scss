@@ -1,0 +1,60 @@
+.header {
+  h5 {
+    margin: 0;
+  }
+}
+
+$Largura-Barra: 60px;
+$MaxHeight: 160px;
+
+.grafico .content{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: $MaxHeight;
+}
+
+.grafico .content span{
+    color: #707070;
+}
+
+.grafico .line{
+    background-color: #CCCCCC;
+    width: 100%;
+    height: 1px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.grafico .legends{
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    text-align: center;
+}
+
+.grafico .legends span{
+    width: 100%;
+    margin:0 15px;
+}
+
+.grafico .bars{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    width: 100%;
+}
+
+.grafico .bar{
+    width: 10px;
+    min-height: 2px;
+    margin:0 15px;
+    border-radius: 2px;
+}
+
+.grafico .bar:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.20);
+}

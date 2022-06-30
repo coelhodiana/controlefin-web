@@ -1,47 +1,59 @@
-<div class="container list-transactions">
-  <div class="list-transactions__header">
-    <h1>lista de transações</h1>
-    <button
-      class="btn btn-primary list-transactions__button"
-      routerLink="nova-transacao"
-    ><i class="bi bi-plus-circle-dotted"></i>
-      nova transação
-    </button>
+<div class="container">
+  <div class="list-transactions">
+    <div class="list-transactions__header">
+      <h1>lista de transações</h1>
+      <button
+        class="btn btn-primary list-transactions__button"
+        routerLink="nova-transacao"
+      >
+        <i class="bi bi-plus-circle-dotted"></i>
+        nova transação
+      </button>
+    </div>
+    <table class="table" *ngIf="transactionsList; else erro">
+      <thead>
+        <tr>
+          <td>id</td>
+          <td>valor</td>
+          <td>descrição</td>
+          <td>data</td>
+          <td>tipo</td>
+          <td class="list-transactions__actions">ações</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let transaction of transactionsList">
+          <td>{{ transaction.id }}</td>
+          <td>{{ transaction.amount | currency: "BRL" }}</td>
+          <td class="list-transactions__description">
+            {{ transaction.description }}
+          </td>
+          <td>{{ transaction.date | date }}</td>
+          <td>{{ transaction.type }}</td>
+          <td class="list-transactions__actions">
+            <button
+            type="button"
+              class="btn btn-link"
+              title="editar transação"
+              [routerLink]="['editar', transaction.id]"
+            >
+              <i class="bi bi-pencil"></i>
+            </button>
+            <button
+            type="button"
+              class="btn btn-link"
+              title="deletar transação"
+              (click)="delete(transaction.id)"
+            >
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <table class="table" *ngIf="transactionsList; else erro">
-    <thead>
-      <tr>
-        <td>id</td>
-        <td>valor</td>
-        <td>descrição</td>
-        <td>data</td>
-        <td>tipo</td>
-        <td class="list-transactions__actions">ações</td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let transaction of transactionsList">
-        <td>{{ transaction.id }}</td>
-        <td>{{ transaction.valor | currency: "BRL" }}</td>
-        <td>{{ transaction.descricao }}</td>
-        <td>{{ transaction.data | date }}</td>
-        <td>{{ transaction.tipo }}</td>
-        <td class="list-transactions__actions">
-          <button
-            class="btn btn-light"
-            [routerLink]="['editar', transaction.id]"
-          >
-            editar
-          </button>
-          <button class="btn btn-light" (click)="delete(transaction.id)">
-            excluir
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
 
-<ng-template #erro>
-  <p>Ainda não existem transações...</p>
-</ng-template>
+  <ng-template #erro>
+    <p>Ainda não existem transações...</p>
+  </ng-template>
+</div>

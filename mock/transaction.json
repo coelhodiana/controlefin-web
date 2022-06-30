@@ -1,81 +1,46 @@
 {
   "transactions": [
     {
+      "id": 5,
+      "amount": 1200,
+      "description": "freela",
+      "type": "entrada",
+      "date": "2022-06-30"
+    },
+    {
+      "id": 6,
+      "amount": 3200,
+      "description": "marca porteirotron",
+      "type": "entrada",
+      "date": "2022-06-30"
+    },
+    {
       "id": 7,
-      "valor": 24.9,
-      "descricao": "jogo stardew valley steam",
-      "tipo": "saída",
-      "data": "2022-05-23"
+      "amount": 12,
+      "description": "sorvete gostoso",
+      "type": "saída",
+      "date": "2022-06-30"
+    },
+    {
+      "id": 8,
+      "amount": 1230,
+      "description": "pedal de máquina",
+      "type": "saída",
+      "date": "2022-06-30"
     },
     {
       "id": 9,
-      "valor": 13,
-      "descricao": "Revista Mundo Estranho",
-      "tipo": "saída",
-      "data": "2022-05-23"
+      "amount": 80,
+      "description": "ração de cachorro bb",
+      "type": "saída",
+      "date": "2022-06-30"
     },
     {
-      "id": 11,
-      "valor": 48,
-      "descricao": "e-book - Fogo e Sangue",
-      "tipo": "saída",
-      "data": "2022-05-23"
-    },
-    {
-      "id": 12,
-      "valor": 2,
-      "descricao": "sorvete mc donald's",
-      "tipo": "saída",
-      "data": "2022-05-23"
-    },
-    {
-      "id": 13,
-      "valor": 15,
-      "descricao": "revista eletronica",
-      "tipo": "saída",
-      "data": "2022-05-23"
-    },
-    {
-      "id": 14,
-      "valor": 400,
-      "descricao": "Headset",
-      "tipo": "saída",
-      "data": "2022-05-23"
-    },
-    {
-      "id": 15,
-      "valor": 1500,
-      "descricao": "Freelance Marca",
-      "tipo": "entrada",
-      "data": "2022-05-23"
-    },
-    {
-      "id": 16,
-      "valor": 89.9,
-      "descricao": "Keldog Tapetes Higiênicos",
-      "tipo": "saída",
-      "data": "2022-05-23"
-    },
-    {
-      "id": 17,
-      "valor": 12.9,
-      "descricao": "pipicat",
-      "tipo": "saída",
-      "data": "2022-05-23"
-    },
-    {
-      "id": 18,
-      "valor": 400,
-      "descricao": "Freela Marca",
-      "tipo": "saída",
-      "data": "2022-05-24"
-    },
-    {
-      "id": 19,
-      "valor": 68,
-      "descricao": "Mercado Pátio Gourmet",
-      "tipo": "saída",
-      "data": "2022-05-24"
+      "id": 10,
+      "amount": 160,
+      "description": "ração de gato gordinho",
+      "type": "saída",
+      "date": "2022-06-30"
     }
   ]
 }

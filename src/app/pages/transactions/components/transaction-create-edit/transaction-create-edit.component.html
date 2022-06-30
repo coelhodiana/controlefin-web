@@ -1,63 +1,68 @@
-<div class="container new-transaction">
-  <form [formGroup]="transactionForm">
-    <h1>
-      {{ transactionId ? "editar transação" : "novo registro de transação" }}
-    </h1>
+<div class="container d-flex justify-content-center">
+  <div class="new-transaction">
+    <form [formGroup]="transactionForm">
+      <h3>
+        {{ transactionId ? "editar transação" : "novo registro de transação" }}
+      </h3>
 
-    <div class="new-transaction__inputs">
-      <div>
-        <label class="form-label" for="valor">valor:</label>
-        <input
-          class="form-control"
-          type="number"
-          name="valor"
-          id="valor"
-          formControlName="valor"
-        />
+      <div class="new-transaction__inputs">
+        <div>
+          <label class="form-label" for="amount">valor:</label>
+          <input
+            class="form-control"
+            type="number"
+            name="amount"
+            id="amount"
+            formControlName="amount"
+          />
+        </div>
+
+        <div>
+          <label class="form-label" for="description">descrição:</label>
+          <input
+            class="form-control"
+            type="text"
+            name="description"
+            id="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div>
+          <label class="form-label" for="type">tipo:</label>
+          <select class="form-select" name="type" formControlName="type">
+            <option value="entrada">entrada</option>
+            <option value="saída" default>saída</option>
+            <option value="investimento" default>investimento</option>
+            <option value="cartão" default>cartão</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="form-label" for="date">data:</label>
+          <input
+            class="form-control"
+            type="date"
+            name="date"
+            id="date"
+            formControlName="date"
+          />
+        </div>
       </div>
 
-      <div>
-        <label class="form-label" for="descricao">descrição:</label>
-        <input
-          class="form-control"
-          type="text"
-          name="descricao"
-          id="descricao"
-          formControlName="descricao"
-        />
+      <div class="new-transaction__footer">
+        <button class="btn btn-light" type="submit" (click)="cancel()">
+          cancelar
+        </button>
+
+        <button
+          class="btn btn-primary"
+          type="submit"
+          (click)="salvarTransacao()"
+        >
+          salvar
+        </button>
       </div>
-
-      <div>
-        <label class="form-label" for="tipo">tipo:</label>
-        <select class="form-select" name="tipo" formControlName="tipo">
-          <option value="entrada">entrada</option>
-          <option value="saída" default>saída</option>
-        </select>
-      </div>
-
-      <div>
-        <label class="form-label" for="descricao">data:</label>
-        <input
-          class="form-control"
-          type="date"
-          name="data"
-          id="data"
-          formControlName="data"
-        />
-      </div>
-    </div>
-
-
-
-    <div class="new-transaction__footer">
-      <button class="btn btn-light" type="submit" (click)="cancel()">
-        cancelar
-      </button>
-
-      <button class="btn btn-primary" type="submit" (click)="salvarTransacao()">
-        salvar
-      </button>
-    </div>
-
-  </form>
+    </form>
+  </div>
 </div>

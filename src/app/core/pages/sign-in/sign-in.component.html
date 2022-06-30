@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-6 offset-3">
+    <div class="signin">
+      <h1>Entrar</h1>
+      <form [formGroup]="signForm">
+        <div class="signin__inputs">
+          <div>
+            <label class="form-label" for="user">usuário:</label>
+            <input
+              class="form-control"
+              type="text"
+              name="user"
+              id="user"
+              formControlName="username"
+            />
+          </div>
+
+          <div>
+            <label class="form-label" for="user">senha:</label>
+            <input
+              class="form-control"
+              type="password"
+              name="password"
+              id="password"
+              formControlName="password"
+            />
+          </div>
+        </div>
+        <button
+          class="btn btn-primary"
+          value="Submit"
+          [disabled]="signForm.invalid"
+          (click)="signin()"
+        >
+          entrar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,11 +1,31 @@
-<app-toast></app-toast>
-<nav class="navbar bg-light navigation">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <span class="navbar-brand mb-0 h1 navigation__brand" routerLink="/transacoes">Navbar</span>
-    <div class="navigation__buttons">
-      <button class="btn btn-light" routerLink="/">sair</button>
+    <a class="navbar-brand" href="#">controlefin</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" routerLink="/dashboard">início</a>
+        <a class="nav-link" routerLink="/transacoes/nova-transacao"
+          >transações</a
+        >
+        <!-- <a class="nav-link" routerLink="/signin">sair</a> -->
+      </div>
     </div>
   </div>
 </nav>
 
-<router-outlet></router-outlet>
+<main class="content">
+  <router-outlet></router-outlet>
+</main>
+
+<app-toast></app-toast>

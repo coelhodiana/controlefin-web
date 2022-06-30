@@ -6,26 +6,24 @@ import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 
-registerLocaleData(ptBr)
+registerLocaleData(ptBr);
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    CoreModule,
   ],
   providers: [
-    {provide: LOCALE_ID,
-      useValue: 'pt'
-    },
-    {provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL'}
+    { provide: LOCALE_ID, useValue: 'pt' },
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

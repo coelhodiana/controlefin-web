@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { Toast, ToastAction } from './model/toast';
@@ -9,7 +9,7 @@ import { ToastService } from './service/toast.service';
   templateUrl: './toast.component.html',
   styleUrls: ['./toast.component.scss'],
 })
-export class ToastComponent {
+export class ToastComponent implements OnDestroy {
   notifications: Toast[] = [];
 
   subscription: Subscription;

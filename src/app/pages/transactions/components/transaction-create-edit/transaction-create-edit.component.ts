@@ -1,9 +1,9 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-
-import { ToastService } from './../../../../shared/components/toast/service/toast.service';
-import { TransactionsService } from './../../services/transactions.service';
+import { ToastService } from 'src/app/shared/components/toast/service/toast.service';
+import { TransactionsService } from 'src/app/shared/services/transactions/transactions.service';
 
 @Component({
   selector: 'app-transaction-create-edit',
@@ -20,18 +20,22 @@ export class TransactionCreateEditComponent implements OnInit {
     private transactions: TransactionsService,
     private route: ActivatedRoute,
     private router: Router,
-    private toast: ToastService
+    private toast: ToastService,
+    private datePipe: DatePipe
   ) {
+    const currentDate = this.datePipe.transform(new Date(), "yyyy-MM-dd")
+
     this.transactionForm = this.fb.group({
       id: [null],
-      valor: [0, Validators.required],
-      descricao: ['', Validators.required],
-      tipo: ['', Validators.required],
-      data: ['', Validators.required]
+      amount: [null, Validators.required],
+      description: ['', Validators.required],
+      type: ['saída', Validators.required],
+      date: [currentDate, Validators.required]
     });
   }
 
   ngOnInit() {
+
     this.transactionId = this.route.snapshot.params['id'];
 
     if (this.transactionId) {

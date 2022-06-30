@@ -1,0 +1,32 @@
+.dash {
+  margin: 3rem 0;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+
+    &__buttons {
+      display: flex;
+      gap: 1rem;
+    }
+  }
+
+  .numbers, .reports {
+    margin-bottom: 2rem;
+  }
+
+  .card {
+    height: 100%;
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+}

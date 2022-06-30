@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,gBAAgB,CAAC;EACf,UAAU,EAAE,IAAI;EAChB,aAAa,EAAE,IAAI;CAcpB;;AAXE,AAAD,wBAAS,CAAC;EACR,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,GAAG,EAAE,IAAI;EACT,aAAa,EAAE,IAAI;CACpB;;AAEA,AAAD,wBAAS,CAAC;EACR,OAAO,EAAE,IAAI;EACb,GAAG,EAAE,IAAI;CACV",
-    "sources": [
-        "transaction-create-edit.component.scss"
-    ],
-    "names": [],
-    "file": "transaction-create-edit.component.css"
-}
