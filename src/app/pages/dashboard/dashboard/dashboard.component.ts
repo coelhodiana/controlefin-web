@@ -14,6 +14,8 @@ export class DashboardComponent implements OnInit {
 
   transactionsList = new BehaviorSubject<Transaction[]>([]);
 
+  balance = 0
+
   income = 0;
 
   total = 0;
@@ -61,5 +63,10 @@ export class DashboardComponent implements OnInit {
     this.expense = this.calculateTotalOfType('saída');
     this.investment = this.calculateTotalOfType('investimento');
     this.creditCard = this.calculateTotalOfType('cartão');
+    this.getBalance();
+  }
+
+  getBalance() {
+    this.balance = this.income-(this.expense + this.investment + this.creditCard)
   }
 }

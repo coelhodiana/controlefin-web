@@ -28,7 +28,7 @@ export class TransactionsListComponent implements OnInit {
     });
   }
 
-  delete(id: number) {
+  delete(id: string) {
     this.transactions.deleteTransaction(id).subscribe({
       next: () => {
         this.toast.notify('Transação excluída com sucesso...', 'success')

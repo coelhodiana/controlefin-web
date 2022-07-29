@@ -10,7 +10,7 @@
         nova transação
       </button>
     </div>
-    <table class="table" *ngIf="transactionsList; else erro">
+    <table class="table" *ngIf="transactionsList.length !== 0; else erro">
       <thead>
         <tr>
           <td>id</td>

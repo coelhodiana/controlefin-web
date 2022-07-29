@@ -13,6 +13,8 @@ import { TransactionsService } from 'src/app/shared/services/transactions/transa
 export class TransactionCreateEditComponent implements OnInit {
   transactionForm: FormGroup;
 
+  bulkTransactions: FormGroup
+
   transactionId: any;
 
   constructor(
@@ -32,6 +34,10 @@ export class TransactionCreateEditComponent implements OnInit {
       type: ['saída', Validators.required],
       date: [currentDate, Validators.required]
     });
+
+    this.bulkTransactions = this.fb.group({
+      list: []
+    })
   }
 
   ngOnInit() {
@@ -43,7 +49,7 @@ export class TransactionCreateEditComponent implements OnInit {
     }
   }
 
-  loadTransaction(id: number) {
+  loadTransaction(id: string) {
     this.transactions.getTransaction(id).subscribe({
       next: (transaction) => {
         this.transactionForm.patchValue({
@@ -82,5 +88,15 @@ export class TransactionCreateEditComponent implements OnInit {
 
   cancel() {
     this.router.navigate(['/transacoes']);
+  }
+
+  salvarBulk() {
+
+    console.log(JSON.parse(this.bulkTransactions.value.list));
+
+    this.transactions.postTransactions(JSON.parse(this.bulkTransactions.value.list));
+
+    this.router.navigate(['/transacoes']);
+
   }
 }
