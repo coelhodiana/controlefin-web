@@ -86,17 +86,27 @@ export class TransactionCreateEditComponent implements OnInit {
     }
   }
 
+  delete(id: string) {
+    this.transactions.deleteTransaction(id).subscribe({
+      next: () => {
+        this.router.navigate(['/'])
+        this.toast.notify('A transação foi deletada com sucesso!', 'success')
+      }
+    })
+  }
+
   cancel() {
     this.router.navigate(['/']);
   }
 
   salvarBulk() {
-
     console.log(JSON.parse(this.bulkTransactions.value.list));
-
     this.transactions.postTransactions(JSON.parse(this.bulkTransactions.value.list));
-
     this.router.navigate(['/']);
+  };
 
+  setType(value: string) {
+    this.transactionForm.patchValue({type: value})
   }
+
 }

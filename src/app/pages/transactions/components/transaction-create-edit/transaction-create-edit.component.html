@@ -1,69 +1,124 @@
-<div class="container d-flex justify-content-center">
-  <div class="new-transaction">
-    <form [formGroup]="transactionForm">
-      <h3>
-        {{ transactionId ? "editar transação" : "novo registro de transação" }}
-      </h3>
+<div class="container mb-5 mt-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="new-transaction">
+        <form [formGroup]="transactionForm">
+          <h3>
+            {{
+              transactionId ? "editar transação" : "novo registro de transação"
+            }}
+          </h3>
 
-      <div class="new-transaction__inputs">
-        <div>
-          <label class="form-label" for="amount">valor:</label>
-          <input
-            class="form-control"
-            type="number"
-            name="amount"
-            id="amount"
-            formControlName="amount"
-          />
-        </div>
+          <div class="new-transaction__inputs">
+            <div>
+              <label class="form-label" for="amount">valor:</label>
+              <input
+                class="form-control"
+                type="number"
+                name="amount"
+                id="amount"
+                formControlName="amount"
+              />
+            </div>
 
-        <div>
-          <label class="form-label" for="description">descrição:</label>
-          <input
-            class="form-control"
-            type="text"
-            name="description"
-            id="description"
-            formControlName="description"
-          />
-        </div>
+            <div>
+              <label class="form-label" for="description">descrição:</label>
+              <input
+                class="form-control"
+                type="text"
+                name="description"
+                id="description"
+                formControlName="description"
+              />
+            </div>
 
-        <div>
-          <label class="form-label" for="type">tipo:</label>
-          <select class="form-select" name="type" formControlName="type">
-            <option value="entrada">entrada</option>
-            <option value="saída" default>saída</option>
-            <option value="investimento" default>investimento</option>
-            <option value="cartão" default>cartão</option>
-          </select>
-        </div>
+            <div>
+              <label class="form-label" for="type">tipo:</label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  aria-label="Tipo da transação"
+                  formControlName="type"
+                  readonly
+                />
+                <div class="input-group-append">
+                  <button
+                    class="btn btn-outline-secondary dropdown-toggle"
+                    type="button"
+                    data-toggle="dropdown"
+                    aria-expanded="false"
+                  ></button>
+                  <div class="dropdown-menu">
+                    <a
+                      class="dropdown-item"
+                      value="entrada"
+                      (click)="setType('entrada')"
+                      >entrada</a
+                    >
+                    <a
+                      class="dropdown-item"
+                      value="saída"
+                      (click)="setType('saída')"
+                      >saída</a
+                    >
+                    <a
+                      class="dropdown-item"
+                      value="investimento"
+                      (click)="setType('investimento')"
+                      >investimento</a
+                    >
+                    <a
+                      class="dropdown-item"
+                      value="cartão"
+                      (click)="setType('cartão')"
+                      >cartão</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
 
-        <div>
-          <label class="form-label" for="date">data:</label>
-          <input
-            class="form-control"
-            type="date"
-            name="date"
-            id="date"
-            formControlName="date"
-          />
-        </div>
+            <div>
+              <label class="form-label" for="date">data:</label>
+              <input
+                class="form-control"
+                type="date"
+                name="date"
+                id="date"
+                formControlName="date"
+              />
+            </div>
+          </div>
+
+          <div class="new-transaction__footer">
+            <button
+              *ngIf="transactionId"
+              class="btn btn-light"
+              type="submit"
+              (click)="delete(transactionId)"
+              title="deletar transação"
+            >
+              <i class="bi bi-trash3"></i>
+            </button>
+
+            <div>
+              <button class="btn btn-light" type="submit" (click)="cancel()">
+                cancelar
+              </button>
+
+              <button
+                class="btn btn-primary ml-2"
+                type="submit"
+                (click)="salvarTransacao()"
+              >
+                salvar
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
-
-      <div class="new-transaction__footer">
-        <button class="btn btn-light" type="submit" (click)="cancel()">
-          cancelar
-        </button>
-
-        <button
-          class="btn btn-primary"
-          type="submit"
-          (click)="salvarTransacao()"
-        >
-          salvar
-        </button>
-      </div>
-    </form>
+    </div>
   </div>
 </div>
 

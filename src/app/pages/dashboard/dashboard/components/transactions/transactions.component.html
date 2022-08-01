@@ -28,6 +28,7 @@
     <div
       *ngFor="let transaction of renderedTransactionsList | async"
       class="transaction-item"
+      routerLink="/transacoes/editar/{{transaction.id}}"
     >
       <div>
         <p class="transaction-item__description">{{ transaction.description }}</p>

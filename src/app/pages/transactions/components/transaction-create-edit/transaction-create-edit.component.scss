@@ -1,8 +1,4 @@
 .new-transaction {
-  margin: 3rem;
-  max-width: 300px;
-
-
   &__inputs {
     display: flex;
     flex-direction: column;
@@ -12,6 +8,7 @@
 
   &__footer {
     display: flex;
+    justify-content: space-between;
     gap: 1rem;
   }
 }

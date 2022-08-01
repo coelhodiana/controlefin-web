@@ -35,7 +35,7 @@ export class DashboardComponent implements OnInit {
   getTransactionsList() {
     this.transactions.listTransactions().subscribe({
       next: (transactions: Transaction[]) => {
-        this.transactionsList.next(transactions);
+        this.transactionsList.next(transactions.reverse());
         this.calculateTotals();
       },
     });
