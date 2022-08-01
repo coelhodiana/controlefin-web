@@ -56,17 +56,17 @@ export class DashboardComponent implements OnInit {
       (prevValue: number, value: Transaction) => prevValue + value.amount,
       inicialValue
     );
-  }
+  };
 
   calculateTotals() {
     this.income = this.calculateTotalOfType('entrada');
-    this.expense = this.calculateTotalOfType('saída');
+    this.expense = this.calculateTotalOfType('saída') + this.calculateTotalOfType('cartão');
     this.investment = this.calculateTotalOfType('investimento');
     this.creditCard = this.calculateTotalOfType('cartão');
     this.getBalance();
-  }
+  };
 
   getBalance() {
-    this.balance = this.income-(this.expense + this.investment + this.creditCard)
-  }
+    this.balance = this.income-(this.expense + this.investment);
+  };
 }
