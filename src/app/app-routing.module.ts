@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/transacoes/nova-transacao',
+    redirectTo: '/transacoes',
     pathMatch: 'full'
   },
   {
