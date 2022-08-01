@@ -2,10 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   redirectTo: '/relatorio',
+  //   pathMatch: 'full'
+  // },
   {
     path: '',
-    redirectTo: '/transacoes/nova-transacao',
-    pathMatch: 'full'
+    loadChildren: () => import('./pages/dashboard/dashboard.module').then(m=>m.DashboardModule),
+    // canActivate: [AuthGuard]
   },
   {
     path: 'signin',
@@ -16,11 +21,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/transactions/transactions.module').then(m=>m.TransactionsModule),
     // canActivate: [AuthGuard]
   },
-  {
-    path: 'dashboard',
-    loadChildren: () => import('./pages/dashboard/dashboard.module').then(m=>m.DashboardModule),
-    // canActivate: [AuthGuard]
-  }
 ];
 
 @NgModule({

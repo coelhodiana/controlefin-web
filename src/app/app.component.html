@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">controlefin</a>
+    <a class="navbar-brand" routerLink="/">controlefin</a>
     <button
       class="navbar-toggler"
       type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNavAltMarkup"
+      data-toggle="collapse"
+      data-target="#navbarNavAltMarkup"
       aria-controls="navbarNavAltMarkup"
       aria-expanded="false"
       aria-label="Toggle navigation"
@@ -15,26 +15,6 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar__buttons">
         <div class="navbar-nav me-auto mb-2 mb-lg-0">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                title="relatório"
-                routerLink="/dashboard"
-                >relatório</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                title="lista de transações"
-                routerLink="/transacoes"
-                >transações</a
-              >
-            </li>
-          </ul>
         </div>
         <div class="navbar-nav">
           <button
@@ -57,3 +37,7 @@
 </main>
 
 <app-toast></app-toast>
+
+<div routerLink="/transacoes" class="add" title="Registrar nova transação">
+  <h1>+</h1>
+</div>

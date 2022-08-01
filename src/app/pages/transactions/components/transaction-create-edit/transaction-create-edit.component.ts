@@ -65,7 +65,7 @@ export class TransactionCreateEditComponent implements OnInit {
         this.transactions.putTransaction(this.transactionForm.value).subscribe({
           next: () => {
             this.toast.notify('Atualizada com sucesso!', 'success');
-            this.router.navigate(['/transacoes']);
+            this.router.navigate(['/']);
           },
           error: () => {
             this.toast.notify('Ops! Não foi possível atualizar...', 'error');
@@ -75,7 +75,7 @@ export class TransactionCreateEditComponent implements OnInit {
         this.transactions
           .postTransaction(this.transactionForm.value)
           .subscribe({
-            next: () => {this.router.navigate(['/transacoes'])
+            next: () => {this.router.navigate(['/'])
           this.toast.notify('A transação foi salva com sucesso!', 'success')
         },
         error: () => {
@@ -87,7 +87,7 @@ export class TransactionCreateEditComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['/transacoes']);
+    this.router.navigate(['/']);
   }
 
   salvarBulk() {
@@ -96,7 +96,7 @@ export class TransactionCreateEditComponent implements OnInit {
 
     this.transactions.postTransactions(JSON.parse(this.bulkTransactions.value.list));
 
-    this.router.navigate(['/transacoes']);
+    this.router.navigate(['/']);
 
   }
 }

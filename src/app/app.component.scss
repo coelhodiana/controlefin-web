@@ -1,13 +1,32 @@
-.content {
-  max-width: 1440px;
-  margin: 0 auto;
-}
 
 .navbar {
-
   &__buttons {
     display: flex;
     justify-content: space-between;
     width: 100%;
   }
 }
+
+.add {
+  background-color: var(--primary);
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  font-size: 24px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 2rem;
+  cursor: pointer;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    color: white;
+    line-height: 0;
+    padding: 0;
+    margin: 0;
+  }
+};

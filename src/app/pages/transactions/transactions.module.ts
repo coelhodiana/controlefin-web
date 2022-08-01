@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 import { TransactionCreateEditComponent } from './components/transaction-create-edit/transaction-create-edit.component';
-import { TransactionsListComponent } from './components/transactions-list/transactions-list.component';
 import { TransactionsComponent } from './transactions.component';
 import { TransactionsRoutes } from './transactions.routing';
 
@@ -23,7 +22,6 @@ import { TransactionsRoutes } from './transactions.routing';
   ],
   declarations: [
     TransactionsComponent,
-    TransactionsListComponent,
     TransactionCreateEditComponent
   ],
   providers: [
