@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="dash">
-    <div class="header">
+
+    <div class="header mt-5">
       <h1>{{ selectedMonth | date: "MMMM, yyyy" }}</h1>
       <div class="header__buttons">
         <button type="button" class="btn btn-light" title="editar transação">
@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="row numbers">
-      <div class="col">
+      <div class="col-md-3 col-sm-1 mb-4">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Saldo</h5>
@@ -20,7 +20,7 @@
           </div>
         </div>
       </div>
-      <div class="col">
+      <div class="col-md-3 col-sm-1 mb-4">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Entradas</h5>
@@ -28,7 +28,7 @@
           </div>
         </div>
       </div>
-      <div class="col">
+      <div class="col-md-3 col-sm-1 mb-4">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Saídas</h5>
@@ -36,7 +36,7 @@
           </div>
         </div>
       </div>
-      <div class="col">
+      <div class="col-md-3 col-sm-1 mb-4">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Investido</h5>
@@ -44,23 +44,12 @@
           </div>
         </div>
       </div>
-      <div class="col">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Cartão</h5>
-            <p>{{ creditCard | currency }}</p>
-          </div>
-        </div>
-      </div>
     </div>
 
     <div class="row reports">
       <div class="col">
-        <app-charts [expense]="expense" [income]="income" [investment]="investment"></app-charts>
-      </div>
-      <div class="col">
         <app-transactions [transactions]="transactionsList"></app-transactions>
       </div>
     </div>
-  </div>
+
 </div>

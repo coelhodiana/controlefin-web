@@ -87,7 +87,7 @@ export class TransactionCreateEditComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['/transacoes']);
+    this.router.navigate(['/']);
   }
 
   salvarBulk() {

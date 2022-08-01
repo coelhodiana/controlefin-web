@@ -23,8 +23,6 @@ export class TransactionsComponent implements OnInit {
 
   ngOnInit() {
     this.getTransactions();
-
-
   }
 
   getTransactions() {
