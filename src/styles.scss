@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import "~bootstrap-icons/font/bootstrap-icons.css";
 @import "../node_modules/bootstrap/scss/functions";
 
 :root {
@@ -24,6 +25,7 @@ body {
   margin-bottom: 1rem;
   overflow-x: hidden;
   position: relative;
+  margin-bottom: 140px;
 }
 
 h1, h2, h3, h4, h5, h6 {
