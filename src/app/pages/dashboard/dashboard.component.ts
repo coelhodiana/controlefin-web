@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { TransactionsService } from 'src/app/shared/services/transactions/transactions.service';
 
-import { Transaction } from '../../../shared/interfaces/transaction';
+import { Transaction } from '../../shared/interfaces/transaction';
 
 @Component({
   selector: 'app-dashboard',
@@ -26,8 +26,6 @@ export class DashboardComponent implements OnInit {
   expense = 0;
 
   investment = 0;
-
-  creditCard = 0;
 
   constructor(
     private transactions: TransactionsService,
@@ -78,9 +76,8 @@ export class DashboardComponent implements OnInit {
   calculateTotals() {
     this.income = this.calculateTotalOfType('entrada');
     this.expense =
-      this.calculateTotalOfType('saída') + this.calculateTotalOfType('cartão');
+      this.calculateTotalOfType('saída');
     this.investment = this.calculateTotalOfType('investimento');
-    this.creditCard = this.calculateTotalOfType('cartão');
     this.getBalance();
   };
 

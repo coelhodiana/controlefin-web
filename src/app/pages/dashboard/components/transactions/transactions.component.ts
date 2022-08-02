@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Transaction } from 'src/app/shared/interfaces/transaction';
 
-import { Transaction } from '../../../../../shared/interfaces/transaction';
 
 @Component({
   selector: 'app-transactions',

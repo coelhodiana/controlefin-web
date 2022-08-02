@@ -3,10 +3,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 import { SharedModule } from './../../shared/shared.module';
+import { ChartsComponent } from './components/charts/charts.component';
+import { TransactionsComponent } from './components/transactions/transactions.component';
+import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutes } from './dashboard.routing';
-import { ChartsComponent } from './dashboard/components/charts/charts.component';
-import { TransactionsComponent } from './dashboard/components/transactions/transactions.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   imports: [
