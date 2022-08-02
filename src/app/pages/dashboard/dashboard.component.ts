@@ -77,7 +77,7 @@ export class DashboardComponent implements OnInit {
     this.income = this.calculateTotalOfType('entrada');
     this.expense =
       this.calculateTotalOfType('saída');
-    this.investment = this.calculateTotalOfType('investimento');
+    this.investment = this.calculateTotalOfType('investido');
     this.getBalance();
   };
 
