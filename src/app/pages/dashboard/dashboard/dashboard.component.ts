@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { TransactionsService } from 'src/app/shared/services/transactions/transactions.service';
@@ -14,7 +15,9 @@ export class DashboardComponent implements OnInit {
 
   transactionsList = new BehaviorSubject<Transaction[]>([]);
 
-  balance = 0
+  transactionsListShow = new BehaviorSubject<Transaction[]>([]);
+
+  balance = 0;
 
   income = 0;
 
@@ -26,7 +29,10 @@ export class DashboardComponent implements OnInit {
 
   creditCard = 0;
 
-  constructor(private transactions: TransactionsService) {}
+  constructor(
+    private transactions: TransactionsService,
+    private datePipe: DatePipe
+  ) {}
 
   ngOnInit() {
     this.getTransactionsList();
@@ -36,14 +42,25 @@ export class DashboardComponent implements OnInit {
     this.transactions.listTransactions().subscribe({
       next: (transactions: Transaction[]) => {
         this.transactionsList.next(transactions.reverse());
+        const list = this.filterTransactionsByMonth(transactions);
+        this.transactionsListShow.next(list);
         this.calculateTotals();
       },
     });
   }
 
   filterTransactionByType(type: string) {
-    return this.transactionsList.value.filter((transaction: any) => {
+    return this.transactionsListShow.value.filter((transaction: any) => {
       return transaction.type === type;
+    });
+  }
+
+  filterTransactionsByMonth(list: Transaction[]) {
+    return list.filter((item) => {
+      return (
+        this.datePipe.transform(item.date, 'yyyy-MM') ===
+        this.datePipe.transform(this.selectedMonth, 'yyyy-MM')
+      );
     });
   }
 
@@ -56,17 +73,46 @@ export class DashboardComponent implements OnInit {
       (prevValue: number, value: Transaction) => prevValue + value.amount,
       inicialValue
     );
-  };
+  }
 
   calculateTotals() {
     this.income = this.calculateTotalOfType('entrada');
-    this.expense = this.calculateTotalOfType('saída') + this.calculateTotalOfType('cartão');
+    this.expense =
+      this.calculateTotalOfType('saída') + this.calculateTotalOfType('cartão');
     this.investment = this.calculateTotalOfType('investimento');
     this.creditCard = this.calculateTotalOfType('cartão');
     this.getBalance();
-  };
+  }
 
   getBalance() {
-    this.balance = this.income-(this.expense + this.investment);
-  };
+    this.balance = this.income - (this.expense + this.investment);
+  }
+
+  nextMonth() {
+    this.selectedMonth = new Date(
+      this.selectedMonth.setMonth(this.selectedMonth.getMonth() + 1)
+    );
+
+    const list: Transaction[] = this.filterTransactionsByMonth(
+      this.transactionsList.value
+    );
+
+    this.transactionsListShow.next(list);
+
+    this.calculateTotals();
+  }
+
+  prevMonth() {
+    this.selectedMonth = new Date(
+      this.selectedMonth.setMonth(this.selectedMonth.getMonth() - 1)
+    );
+
+    const list: Transaction[] = this.filterTransactionsByMonth(
+      this.transactionsList.value
+    );
+
+    this.transactionsListShow.next(list);
+
+    this.calculateTotals();
+  }
 }

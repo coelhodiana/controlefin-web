@@ -3,10 +3,10 @@
     <div class="header mt-5">
       <h1>{{ selectedMonth | date: "MMMM, yyyy" }}</h1>
       <div class="header__buttons">
-        <button type="button" class="btn btn-light" title="editar transação">
+        <button type="button" class="btn btn-light" title="editar transação" (click)="prevMonth()">
           <i class="bi bi-chevron-left"></i>
         </button>
-        <button type="button" class="btn btn-light" title="editar transação">
+        <button type="button" class="btn btn-light" title="editar transação" (click)="nextMonth()">
           <i class="bi bi-chevron-right"></i>
         </button>
       </div>
@@ -48,7 +48,7 @@
 
     <div class="row reports">
       <div class="col">
-        <app-transactions [transactions]="transactionsList"></app-transactions>
+        <app-transactions [transactions]="transactionsListShow"></app-transactions>
       </div>
     </div>
 
