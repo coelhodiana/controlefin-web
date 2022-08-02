@@ -82,16 +82,33 @@ export class DashboardComponent implements OnInit {
     this.investment = this.calculateTotalOfType('investimento');
     this.creditCard = this.calculateTotalOfType('cartão');
     this.getBalance();
-  }
+  };
 
   getBalance() {
     this.balance = this.income - (this.expense + this.investment);
-  }
+  };
 
-  nextMonth() {
-    this.selectedMonth = new Date(
-      this.selectedMonth.setMonth(this.selectedMonth.getMonth() + 1)
+  selectCurrentMonth() {
+    this.selectedMonth = new Date();
+    const list: Transaction[] = this.filterTransactionsByMonth(
+      this.transactionsList.value
     );
+
+    this.transactionsListShow.next(list);
+
+    this.calculateTotals();
+  };
+
+  selectMonth(month: string) {
+    if(month === 'next') {
+      this.selectedMonth = new Date(
+        this.selectedMonth.setMonth(this.selectedMonth.getMonth() + 1)
+      );
+    } else if(month === 'prev') {
+      this.selectedMonth = new Date(
+        this.selectedMonth.setMonth(this.selectedMonth.getMonth() - 1)
+      );
+    };
 
     const list: Transaction[] = this.filterTransactionsByMonth(
       this.transactionsList.value
@@ -100,19 +117,5 @@ export class DashboardComponent implements OnInit {
     this.transactionsListShow.next(list);
 
     this.calculateTotals();
-  }
-
-  prevMonth() {
-    this.selectedMonth = new Date(
-      this.selectedMonth.setMonth(this.selectedMonth.getMonth() - 1)
-    );
-
-    const list: Transaction[] = this.filterTransactionsByMonth(
-      this.transactionsList.value
-    );
-
-    this.transactionsListShow.next(list);
-
-    this.calculateTotals();
-  }
-}
+  };
+};

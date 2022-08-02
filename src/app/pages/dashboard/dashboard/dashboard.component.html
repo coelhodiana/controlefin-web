@@ -1,55 +1,83 @@
 <div class="container">
+  <div class="header mt-5">
+    <div class="d-flex align-items-center">
+      <h1 class="mr-4">{{ selectedMonth | date: "MMMM, yyyy" }}</h1>
+      <div class="dropdown mr-2">
+        <a
+          class="btn btn-light dropdown-toggle"
+          role="button"
+          data-toggle="dropdown"
+          aria-expanded="false"
+        >
+        </a>
 
-    <div class="header mt-5">
-      <h1>{{ selectedMonth | date: "MMMM, yyyy" }}</h1>
-      <div class="header__buttons">
-        <button type="button" class="btn btn-light" title="editar transação" (click)="prevMonth()">
-          <i class="bi bi-chevron-left"></i>
-        </button>
-        <button type="button" class="btn btn-light" title="editar transação" (click)="nextMonth()">
-          <i class="bi bi-chevron-right"></i>
-        </button>
-      </div>
-    </div>
-    <div class="row numbers">
-      <div class="col-md-3 col-sm-6 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Saldo</h5>
-            <p>{{ balance | currency }}</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Entradas</h5>
-            <p>{{ income | currency }}</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Saídas</h5>
-            <p>{{ expense | currency }}</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Investido</h5>
-            <p>{{ investment | currency }}</p>
-          </div>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" (click)="selectCurrentMonth()"
+            >selecionar mês atual</a
+          >
         </div>
       </div>
     </div>
 
-    <div class="row reports">
-      <div class="col">
-        <app-transactions [transactions]="transactionsListShow"></app-transactions>
+    <div class="header__buttons">
+      <button
+        type="button"
+        class="btn btn-light"
+        title="editar transação"
+        (click)="selectMonth('next')"
+      >
+        <i class="bi bi-chevron-left"></i>
+      </button>
+      <button
+        type="button"
+        class="btn btn-light"
+        title="editar transação"
+        (click)="selectMonth('prev')"
+      >
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+  <div class="row numbers">
+    <div class="col-md-3 col-sm-6 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Saldo</h5>
+          <p>{{ balance | currency }}</p>
+        </div>
       </div>
     </div>
+    <div class="col-md-3 col-sm-6 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Entradas</h5>
+          <p>{{ income | currency }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Saídas</h5>
+          <p>{{ expense | currency }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Investido</h5>
+          <p>{{ investment | currency }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <div class="row reports">
+    <div class="col">
+      <app-transactions
+        [transactions]="transactionsListShow"
+      ></app-transactions>
+    </div>
+  </div>
 </div>
