@@ -43,9 +43,9 @@
             <li>
               <a
                 class="dropdown-item"
-                [class.active]="activeType === 'investimento'"
-                (click)="filterTransactionsList('investimento')"
-                >investidos</a
+                [class.active]="activeType === 'investido'"
+                (click)="filterTransactionsList('investido')"
+                >investido</a
               >
             </li>
           </ul>
@@ -72,7 +72,7 @@
       </div>
     </div>
 
-    <div *ngIf="(renderedTransactionsList | async)?.length === 0;" class="text-center m-5 p-5">
+    <div *ngIf="(renderedTransactionsList | async)?.length === 0;" class="text-center mb-5 pb-5 mt-5 pt-5">
       <p >Registre transações para começar!</p>
       <button class="btn btn-primary" routerLink="/transacoes" title="Registrar nova transação">
         <i class="bi bi-plus-lg"></i> nova transação

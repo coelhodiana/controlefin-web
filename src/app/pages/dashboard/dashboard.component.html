@@ -1,8 +1,7 @@
 <div class="container">
   <div class="header mt-5">
     <div class="d-flex align-items-center">
-      <h1 class="m-0 p-0">{{ selectedMonth | date: "MMMM, yyyy" }}</h1>
-      <div class="dropdown ml-2">
+      <div class="dropdown mr-2">
         <a
           class="btn btn-light dropdown-toggle"
           role="button"
@@ -17,6 +16,7 @@
           >
         </div>
       </div>
+      <h1 class="m-0 p-0">{{ selectedMonth | date: "MMM yyyy" | uppercase}}</h1>
     </div>
 
     <div class="header__buttons">
