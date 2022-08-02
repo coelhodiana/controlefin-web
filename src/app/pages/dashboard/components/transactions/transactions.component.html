@@ -16,10 +16,38 @@
             {{ activeType }}
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" [class.active]="activeType === 'todas'" (click)="filterTransactionsList('todas')">todas</a></li>
-            <li><a class="dropdown-item" [class.active]="activeType === 'entrada'" (click)="filterTransactionsList('entrada')">entradas</a></li>
-            <li><a class="dropdown-item" [class.active]="activeType === 'saída'" (click)="filterTransactionsList('saída')">saídas</a></li>
-            <li><a class="dropdown-item" [class.active]="activeType === 'investimento'" (click)="filterTransactionsList('investimento')">investidos</a></li>
+            <li>
+              <a
+                class="dropdown-item"
+                [class.active]="activeType === 'todas'"
+                (click)="filterTransactionsList('todas')"
+                >todas</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                [class.active]="activeType === 'entrada'"
+                (click)="filterTransactionsList('entrada')"
+                >entradas</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                [class.active]="activeType === 'saída'"
+                (click)="filterTransactionsList('saída')"
+                >saídas</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                [class.active]="activeType === 'investimento'"
+                (click)="filterTransactionsList('investimento')"
+                >investidos</a
+              >
+            </li>
           </ul>
         </div>
       </div>
@@ -27,10 +55,12 @@
     <div
       *ngFor="let transaction of renderedTransactionsList | async"
       class="transaction-item"
-      routerLink="/transacoes/editar/{{transaction.id}}"
+      routerLink="/transacoes/editar/{{ transaction.id }}"
     >
       <div>
-        <p class="transaction-item__description">{{ transaction.description }}</p>
+        <p class="transaction-item__description">
+          {{ transaction.description }}
+        </p>
         <p class="transaction-item__date">
           <small>{{ transaction.date | date }}</small>
         </p>
@@ -40,6 +70,13 @@
         <i class="bi bi-dash" *ngIf="transaction.type === 'saída'"></i>
         <p>{{ transaction.amount | currency }}</p>
       </div>
+    </div>
+
+    <div *ngIf="(renderedTransactionsList | async)?.length === 0;" class="text-center m-5 p-5">
+      <p >Registre transações para começar!</p>
+      <button class="btn btn-primary" routerLink="/transacoes" title="Registrar nova transação">
+        <i class="bi bi-plus-lg"></i> nova transação
+      </button>
     </div>
   </div>
 </div>
