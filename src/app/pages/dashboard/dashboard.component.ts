@@ -34,8 +34,10 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.getTransactionsList();
+    // this.transactions.postMethod().subscribe({
+    //   next: ()=>console.log
+    // })
   }
-
   getTransactionsList() {
     this.transactions.listTransactions().subscribe({
       next: (transactions: Transaction[]) => {

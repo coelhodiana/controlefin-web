@@ -90,6 +90,21 @@ export class TransactionsService {
   }
 
   postTransactions(transactions: Transaction[]) {
-    localStorage.setItem('transactions', JSON.stringify([...this.localTransactions, ...transactions]))
+    localStorage.setItem(
+      'transactions',
+      JSON.stringify([...this.localTransactions, ...transactions])
+    );
   }
-}
+
+  postMethod(): Observable<any> {
+    const data = {
+      value: 123,
+      description: 'lanches',
+      type: 'investido',
+    };
+    return this.http.post<any>(
+      'https://4i7p3xshu1.execute-api.us-east-1.amazonaws.com/dev/transaction',
+      data
+    );
+  };
+};
