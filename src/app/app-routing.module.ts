@@ -1,20 +1,28 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { HomeComponent } from './pages/home/home.component';
+import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
+
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: '/relatorio',
-  //   pathMatch: 'full'
-  // },
   {
     path: '',
+    component: HomeComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'dashboard',
     loadChildren: () => import('./pages/dashboard/dashboard.module').then(m=>m.DashboardModule),
     // canActivate: [AuthGuard]
   },
   {
-    path: 'signin',
-    loadChildren: () => import('./core/pages/sign-in/sign-in.module').then(m => m.SignInModule),
+    path: 'login',
+    component: SignInComponent
+  },
+  {
+    path: 'cadastro',
+    component: SignUpComponent
   },
   {
     path: 'transacoes',

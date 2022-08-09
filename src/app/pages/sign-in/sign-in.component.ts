@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { AuthService } from '../../../shared/services/auth/auth.service';
+import { AuthService } from '../../core/services/auth/auth.service';
+
 
 @Component({
   selector: 'app-sign-in',
@@ -10,6 +11,7 @@ import { AuthService } from '../../../shared/services/auth/auth.service';
 })
 export class SignInComponent {
   signForm: FormGroup;
+  showPassword = false;
 
   constructor(private fb: FormBuilder, private auth: AuthService) {
     this.signForm = this.fb.group({

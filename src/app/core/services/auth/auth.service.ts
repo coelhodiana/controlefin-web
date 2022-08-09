@@ -15,7 +15,7 @@ export class AuthService {
   login(user: User) {
     this.userAuthenticated.next(true);
     localStorage.setItem("isSigned", "true");
-    this.router.navigate(['/transacoes']);
+    this.router.navigate(['/dashboard']);
   }
 
   logout() {

@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { AuthService } from './shared/services/auth/auth.service';
+import { AuthService } from './core/services/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +9,7 @@ import { AuthService } from './shared/services/auth/auth.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnDestroy {
-  title = 'boilerplate-angular';
-
   isAuthenticated$: Subscription;
-
   isSignedIn = false;
 
   constructor(private auth: AuthService) {
