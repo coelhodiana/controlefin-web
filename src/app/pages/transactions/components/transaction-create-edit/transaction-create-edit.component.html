@@ -5,20 +5,27 @@
         <form [formGroup]="transactionForm">
           <h3>
             {{
-              transactionId ? "editar transação" : "novo registro de transação"
+              transactionId ? "Editar transação" : "Novo registro de transação"
             }}
           </h3>
 
           <div class="new-transaction__inputs">
             <div>
               <label class="form-label" for="amount">valor:</label>
-              <input
-                class="form-control"
-                type="number"
-                name="amount"
-                id="amount"
-                formControlName="amount"
-              />
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">R$</span>
+                </div>
+                <input
+                  class="form-control"
+                  type="number"
+                  name="amount"
+                  id="amount"
+                  formControlName="amount"
+                  aria-label="Valor da transação"
+                  placeholder="12"
+                />
+              </div>
             </div>
 
             <div>
@@ -29,6 +36,7 @@
                 name="description"
                 id="description"
                 formControlName="description"
+                placeholder="Descrição da transação"
               />
             </div>
 

@@ -75,7 +75,7 @@ export class TransactionCreateEditComponent implements OnInit {
         this.transactions
           .postTransaction(this.transactionForm.value)
           .subscribe({
-            next: () => {this.router.navigate(['/'])
+            next: () => {this.router.navigate(['/dashboard'])
           this.toast.notify('A transação foi salva com sucesso!', 'success')
         },
         error: () => {
@@ -89,20 +89,20 @@ export class TransactionCreateEditComponent implements OnInit {
   delete(id: string) {
     this.transactions.deleteTransaction(id).subscribe({
       next: () => {
-        this.router.navigate(['/'])
+        this.router.navigate(['/dashboard'])
         this.toast.notify('A transação foi deletada com sucesso!', 'success')
       }
     })
   }
 
   cancel() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/dashboard']);
   }
 
   salvarBulk() {
     console.log(JSON.parse(this.bulkTransactions.value.list));
     this.transactions.postTransactions(JSON.parse(this.bulkTransactions.value.list));
-    this.router.navigate(['/']);
+    this.router.navigate(['/dashboard']);
   };
 
   setType(value: string) {
