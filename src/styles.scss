@@ -7,6 +7,7 @@
   --background-color: #f5f5f5;
   --border-color: rgba(51, 51, 51, 0.2);
   --primary: var($primary);
+  --black: #111111;
 }
 
 * {
@@ -16,7 +17,7 @@
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 body {
@@ -34,4 +35,28 @@ h1, h2, h3, h4, h5, h6 {
 
 li {
   font-style: italic;
+}
+
+.botao {
+  font-weight: bold;
+  font-style: italic;
+  padding: 1rem 2rem;
+  border-radius: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  flex-shrink: 1;
+
+  &__primary {
+    background-color: var(--black);
+    color: var(--background-color);
+  }
+
+  &__light {
+    background-color: var(--background-color);
+    color: var(--black);
+  }
+
+  &__light:hover {
+    background-color: #dedede;
+  }
 }

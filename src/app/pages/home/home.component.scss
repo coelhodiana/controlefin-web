@@ -1,0 +1,26 @@
+@media (max-width: 768px) {
+  .hero {
+    &__text-content {
+      margin-top: 8rem;
+      justify-content: flex-end;
+    }
+
+    &__headline {
+      font-weight: bold;
+      font-size: 2rem;
+    }
+  }
+}
+
+.hero {
+  &__text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  &__headline {
+    font-weight: bold;
+  }
+}
