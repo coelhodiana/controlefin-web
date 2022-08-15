@@ -1,10 +1,10 @@
 <div class="container">
-  <div class="row mb-5 mt-5">
+  <div class="row">
     <div class="col-md-6 offset-md-3">
-      <div class="signin">
+      <div class="signup">
         <h1>Criar conta</h1>
         <form [formGroup]="signupForm">
-          <div class="signin__inputs">
+          <div class="signup__inputs">
             <div>
               <label class="form-label" for="user">E-mail:</label>
               <input
@@ -28,7 +28,7 @@
                 />
                 <div class="input-group-append">
                   <a
-                    class="input-group-text signin__password-button"
+                    class="input-group-text signup__password-button"
                     title="mostrar senha"
                     (click)="showPassword = !showPassword"
                   >
@@ -50,7 +50,7 @@
                 />
                 <div class="input-group-append">
                   <a
-                    class="input-group-text signin__password-button"
+                    class="input-group-text signup__password-button"
                     title="mostrar senha"
                     (click)="showConfirmPassword = !showConfirmPassword"
                   >
