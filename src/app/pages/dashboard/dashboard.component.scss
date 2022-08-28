@@ -14,18 +14,23 @@
   &__buttons {
     display: flex;
     gap: 1rem;
-  };
-};
+  }
+}
 
 .numbers,
 .reports {
   margin-bottom: 2rem;
-};
+}
 
 .card {
   height: 100%;
+  border-color: var(--border-color);
+  overflow: hidden;
+
 
   .card-body {
+    background-color: var(--card-bg-color);
+    background-blend-mode: overlay;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

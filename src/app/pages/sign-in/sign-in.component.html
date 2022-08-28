@@ -1,53 +1,50 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 offset-md-3">
-      <div class="signin">
-        <h1>Entrar</h1>
-        <form [formGroup]="signForm">
-          <div class="signin__inputs">
-            <div>
-              <label class="form-label" for="user">usuário:</label>
-              <input
-                class="form-control"
-                type="text"
-                name="user"
-                id="user"
-                formControlName="username"
-              />
-            </div>
+<div class="signin">
+  <form [formGroup]="signForm">
+    <h1>Entrar</h1>
+    <div class="signin__inputs">
+      <div>
+        <label class="form-label" for="email">E-mail:</label>
+        <input
+          class="form-control"
+          type="text"
+          name="email"
+          id="email"
+          formControlName="email"
+        />
+      </div>
 
-            <div>
-              <label class="form-label" for="user">senha:</label>
-              <div class="input-group d-flex">
-                <input
-                  class="form-control"
-                  [type]="showPassword ? 'text' : 'password'"
-                  name="password"
-                  id="password"
-                  formControlName="password"
-                />
-                <div class="input-group-append">
-                  <a
-                    class="input-group-text signin__password-button"
-                    title="mostrar senha"
-                    (click)="showPassword = !showPassword"
-                  >
-                    {{ showPassword ? "🙉 " : "🙈" }}
-                  </a>
-                </div>
-              </div>
-            </div>
+      <div>
+        <label class="form-label" for="password">Senha:</label>
+        <div class="input-group d-flex">
+          <input
+            class="form-control"
+            [type]="showPassword ? 'text' : 'password'"
+            name="password"
+            id="password"
+            formControlName="password"
+          />
+          <div class="input-group-append">
+            <a
+              class="input-group-text signin__password-button"
+              title="mostrar senha"
+              (click)="showPassword = !showPassword"
+            >
+              {{ showPassword ? "🙉 " : "🙈" }}
+            </a>
           </div>
-          <button
-            class="btn btn-primary"
-            value="Submit"
-            [disabled]="signForm.invalid"
-            (click)="signin()"
-          >
-            entrar
-          </button>
-        </form>
+        </div>
       </div>
     </div>
-  </div>
+    <div class="signin__footer">
+      <a href="">Esqueci minha senha</a>
+      <button
+        class="botao btn btn-primary"
+        value="Submit"
+        [disabled]="signForm.invalid"
+        (click)="signin()"
+      >
+        entrar
+      </button>
+    </div>
+  </form>
 </div>

@@ -1,76 +1,101 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 offset-md-3">
-      <div class="signup">
-        <h1>Criar conta</h1>
-        <form [formGroup]="signupForm">
-          <div class="signup__inputs">
-            <div>
-              <label class="form-label" for="user">E-mail:</label>
-              <input
-                class="form-control"
-                type="text"
-                name="email"
-                id="email"
-                formControlName="email"
-              />
-            </div>
+<div class="signup">
+  <form [formGroup]="signupForm" class="signup-form">
+    <h1>Criar conta</h1>
+    <div class="signup-form__inputs">
+      <div>
+        <label class="form-label" for="user">E-mail:</label>
+        <input
+          class="form-control"
+          type="text"
+          name="email"
+          id="email"
+          formControlName="email"
+        />
+      </div>
 
-            <div>
-              <label class="form-label" for="user">senha:</label>
-              <div class="input-group d-flex">
-                <input
-                  class="form-control"
-                  [type]="showPassword ? 'text' : 'password'"
-                  name="password"
-                  id="password"
-                  formControlName="password"
-                />
-                <div class="input-group-append">
-                  <a
-                    class="input-group-text signup__password-button"
-                    title="mostrar senha"
-                    (click)="showPassword = !showPassword"
-                  >
-                    {{ showPassword ? "🙉 " : "🙈" }}
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <label class="form-label" for="user">confirmar senha:</label>
-              <div class="input-group d-flex">
-                <input
-                  class="form-control"
-                  [type]="showConfirmPassword ? 'text' : 'password'"
-                  name="confirmPassword"
-                  id="confirmPassword"
-                  formControlName="confirmPassword"
-                />
-                <div class="input-group-append">
-                  <a
-                    class="input-group-text signup__password-button"
-                    title="mostrar senha"
-                    (click)="showConfirmPassword = !showConfirmPassword"
-                  >
-                    {{ showConfirmPassword ? "🙉 " : "🙈" }}
-                  </a>
-                </div>
-              </div>
-            </div>
+      <div>
+        <label class="form-label" for="user">senha:</label>
+        <div class="input-group d-flex">
+          <input
+            class="form-control"
+            [type]="showPassword ? 'text' : 'password'"
+            name="password"
+            id="password"
+            formControlName="password"
+          />
+          <div class="input-group-append">
+            <a
+              class="input-group-text signup__password-button"
+              title="mostrar senha"
+              (click)="showPassword = !showPassword"
+            >
+              {{ showPassword ? "🙉 " : "🙈" }}
+            </a>
           </div>
+        </div>
+      </div>
 
-          <button
-            class="btn btn-primary mt-4"
-            value="Submit"
-            [disabled]="signupForm.invalid"
-            (click)="signup()"
-          >
-            cadastrar
-          </button>
-        </form>
+      <div>
+        <label class="form-label" for="user">confirmar senha:</label>
+        <div class="input-group d-flex">
+          <input
+            class="form-control"
+            [type]="showConfirmPassword ? 'text' : 'password'"
+            name="confirmPassword"
+            id="confirmPassword"
+            formControlName="confirmPassword"
+          />
+          <div class="input-group-append">
+            <a
+              class="input-group-text signup__password-button"
+              title="mostrar senha"
+              (click)="showConfirmPassword = !showConfirmPassword"
+            >
+              {{ showConfirmPassword ? "🙉 " : "🙈" }}
+            </a>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+
+    <div class="signup-form__botao">
+      <button
+        class="botao btn btn-primary"
+        value="Submit"
+        [disabled]="signupForm.invalid"
+        (click)="signUp(signupForm)"
+      >
+        cadastrar
+      </button>
+    </div>
+  </form>
+
+  <form [formGroup]="confirmForm" class="confirm-form" *ngIf="isConfirm">
+    <h1>Confirmar conta</h1>
+    <div>
+      <label for="code" class="form-label">Código de confirmação:</label>
+      <input
+        type="text"
+        id="code"
+        name="code"
+        formControlName="code"
+        class="form-control"
+      />
+    </div>
+
+    <div class="confirm-form__botao">
+      <button
+        type="button"
+        (click)="confirmSignUp()"
+        class="botao btn btn-success mt-3"
+      >
+        <span
+          class="spinner-border spinner-border-sm"
+          role="status"
+          aria-hidden="true"
+        ></span>
+        Confirmar
+      </button>
+    </div>
+  </form>
 </div>

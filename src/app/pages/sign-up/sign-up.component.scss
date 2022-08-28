@@ -1,4 +1,47 @@
 .signup {
-  margin-top: 5rem;
-  margin-bottom: 5rem;
+  margin-top: 3rem;
+  padding: 0 1rem;
+
+  .signup-form {
+    margin-bottom: 3rem;
+
+    div {
+      margin-bottom: 1rem;
+    }
+
+    &__botao {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  .confirm-form {
+    div {
+      margin-bottom: 1rem;
+    }
+
+    &__botao {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .signup {
+    margin: 0 auto;
+    max-width: 500px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .signup {
+    margin: 0 auto;
+    max-width: 500px;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }

@@ -1,3 +1,12 @@
+.card {
+  border-color: var(--border-color);
+  overflow: hidden;
+
+  .card-body {
+    background-color: var(--card-bg-color);
+  }
+}
+
 .transaction-item {
   padding: 1rem;
   border-bottom: 1px solid #f1f1f1;

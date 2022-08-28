@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AuthService } from '../../core/services/auth/auth.service';
+import { IUser } from './../../core/services/auth/auth.service';
 
 
 @Component({
@@ -15,12 +16,19 @@ export class SignInComponent {
 
   constructor(private fb: FormBuilder, private auth: AuthService) {
     this.signForm = this.fb.group({
-      username: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
 
   signin() {
-    this.auth.login(this.signForm.value);
+    const user: IUser = {
+      email: this.signForm.value.email,
+      password: this.signForm.value.password,
+      showPassword: false,
+      name: '',
+      code: ''
+    }
+    this.auth.signIn(user);
   }
 }

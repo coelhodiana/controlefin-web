@@ -1,14 +1,25 @@
-<div class="container-fluid">
+<div class="loading" *ngIf="loading; else hero">carregando...</div>
+
+<ng-template #hero>
   <section class="hero">
-    <div class="row">
-      <div class="col-12 col-md-5 col-xl-3 offset-xl-2 hero__text-content">
-        <h1 class="hero__headline">REGISTRAR SEUS GASTOS NUNCA FOI TÃO FÁCIL</h1>
-        <p class="mt-4">Utilize o controlefin para registrar transações financeiras de entradas, gastos e investimentos;</p>
-        <button class="botao botao__primary mt-4" (click)="irPara('cadastro')">CRIAR CONTA</button>
-      </div>
-      <div class="col-12 col-md-7 col-xl-6 d-flex justify-content-center">
-        <img class="img-fluid" src="https://github.com/coelhodiana/controlefin-web/blob/gh-pages/assets/hero/hero-img.png?raw=true" alt="">
-      </div>
+    <div class="hero__text-content">
+      <h1 class="hero__headline">REGISTRAR SEUS GASTOS NUNCA FOI TÃO FÁCIL</h1>
+      <p class="hero__text">
+        Utilize o controlefin para registrar transações financeiras de entradas,
+        gastos e investimentos;
+      </p>
+      <button class="botao botao__dark" [routerLink]="['cadastro']">
+        CRIAR CONTA
+      </button>
     </div>
-  </section>
-</div>
+
+    <div class="hero__image">
+      <img
+          class="img-fluid"
+          src="./../../../assets/hero/hero-img.png"
+          alt=""
+          />
+        </div>
+      </section>
+    </ng-template>
+    <!-- src="https://github.com/coelhodiana/controlefin-web/blob/gh-pages/assets/hero/hero-img.png?raw=true" -->

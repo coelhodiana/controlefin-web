@@ -1,30 +1,65 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import Amplify, { Auth } from 'aws-amplify';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
-import { User } from '../../interfaces/user';
-
+export interface IUser {
+  email: string;
+  password: string;
+  showPassword: boolean;
+  code: string;
+  name: string;
+}
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  userAuthenticated = new BehaviorSubject<boolean>(false);
+  private authenticationSubject: BehaviorSubject<any>;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    Amplify.configure({
+      Auth: environment.cognito,
+    });
 
-  login(user: User) {
-    this.userAuthenticated.next(true);
-    localStorage.setItem("isSigned", "true");
-    this.router.navigate(['/dashboard']);
+    this.authenticationSubject = new BehaviorSubject<boolean>(false);
   }
 
-  logout() {
-    this.userAuthenticated.next(false);
-    localStorage.setItem("isSigned", "false");
-    this.router.navigate(['/']);
+  public signUp(user: IUser): Promise<any> {
+    return Auth.signUp({
+      username: user.email,
+      password: user.password,
+    });
   }
 
-  isAuthenticated() {
-    return this.userAuthenticated.value;
+  public confirmSignUp(user: IUser): Promise<any> {
+    return Auth.confirmSignUp(user.email, user.code);
+  }
+
+  public signIn(user: IUser): Promise<any> {
+    return Auth.signIn(user.email, user.password).then(() => {
+      this.authenticationSubject.next(true);
+      this.router.navigate(['/dashboard']);
+    });
+  }
+
+  public signOut(): Promise<any> {
+    return Auth.signOut().then(() => {
+      this.authenticationSubject.next(false);
+    });
+  }
+
+  public isAuthenticated(): Observable<boolean> {
+    return this.authenticationSubject
+  }
+
+  public getUser(): Promise<any> {
+    return Auth.currentUserInfo();
+  }
+
+  public updateUser(user: IUser): Promise<any> {
+    return Auth.currentUserPoolUser().then((cognitoUser: any) => {
+      return Auth.updateUserAttributes(cognitoUser, user);
+    });
   }
 }

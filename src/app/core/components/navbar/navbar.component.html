@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">🤑 controlefin</a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar__links">
+        <div class="navbar-nav">
+          <div *ngIf="isSigned">
+            <button
+              type="button"
+              class="btn btn-light"
+              title="editar transação"
+              routerLink="/dashboard"
+            >
+              início
+            </button>
+          </div>
+        </div>
+        <div class="navbar-nav">
+          <a
+            class="icon"
+            title="{{ isDark ? 'ligar modo dia' : 'ligar modo noturno' }}"
+            (click)="switchTheme()"
+          >
+            <i class="{{ isDark ? 'bi bi-sun-fill' : 'bi bi-moon-fill' }}"></i>
+          </a>
+
+          <div *ngIf="!isSigned">
+            <button
+              type="button"
+              class="botao botao__light mr-2"
+              title="editar transação"
+              routerLink="/cadastro"
+            >
+              criar conta
+            </button>
+
+            <button
+              type="button"
+              class="botao botao__dark"
+              title="editar transação"
+              routerLink="/entrar"
+            >
+              entrar
+            </button>
+          </div>
+
+          <button
+            type="button"
+            class="botao botao__light"
+            title="editar transação"
+            (click)="signOut()"
+            *ngIf="isSigned"
+          >
+            sair
+            <i class="bi bi-box-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,5 +1,5 @@
-import { Component, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AuthService } from './core/services/auth/auth.service';
 
@@ -8,26 +8,16 @@ import { AuthService } from './core/services/auth/auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnDestroy {
-  isAuthenticated$: Subscription;
-  isSignedIn = false;
+export class AppComponent {
+  isSigned = false;
 
-  constructor(private auth: AuthService) {
-    this.isAuthenticated$ = this.auth.userAuthenticated.subscribe({
-      next: (value) => {
-        this.isSignedIn = value;
-      },
-      error: () => {
-        this.isSignedIn = false;
-      },
-    });
-  }
+  constructor(private router: Router, public auth: AuthService) {}
 
-  ngOnDestroy(): void {
-    this.isAuthenticated$.unsubscribe();
-  }
-
-  logout() {
-    this.auth.logout();
+  isSignedIn() {
+    this.auth.isAuthenticated().subscribe({
+      next: (res) => {
+        this.isSigned = res
+      }
+    })
   }
 }

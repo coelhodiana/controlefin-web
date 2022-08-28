@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { CoreModule } from './core/core.module';
 import { HomeComponent } from './pages/home/home.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
@@ -16,7 +17,7 @@ import { SharedModule } from './shared/shared.module';
 registerLocaleData(ptBr);
 
 @NgModule({
-  declarations: [AppComponent, SignUpComponent, SignInComponent, HomeComponent],
+  declarations: [AppComponent, SignUpComponent, SignInComponent, HomeComponent, NavbarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

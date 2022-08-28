@@ -4,13 +4,14 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
+  loading = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
-  irPara(rota: string) {
-    this.router.navigateByUrl(rota);
+  goToLink(route: string) {
+    this.router.navigateByUrl(route);
   }
 }
