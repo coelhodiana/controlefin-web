@@ -13,10 +13,19 @@ export class NavbarComponent {
 
   isSigned = false;
 
+  isAuthenticated: boolean;
+
   constructor(private router: Router, public auth: AuthService) {
     this.setCurrentThemeMode();
     this.isSignedIn();
     console.log(this.isSigned);
+
+    this.isAuthenticated = false;
+
+    this.auth.isAuthenticated()
+    .subscribe((success: boolean) => {
+      this.isAuthenticated = success;
+    });
 
   }
 

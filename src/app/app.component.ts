@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from './core/services/auth/auth.service';
@@ -8,10 +8,21 @@ import { AuthService } from './core/services/auth/auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   isSigned = false;
+  isAuthenticated: boolean;
 
-  constructor(private router: Router, public auth: AuthService) {}
+  constructor(private router: Router, public auth: AuthService) {
+    this.isAuthenticated = false;
+  }
+
+
+  public ngOnInit(): void {
+    this.auth.isAuthenticated()
+    .subscribe((success: boolean) => {
+      this.isAuthenticated = success;
+    });
+  }
 
   isSignedIn() {
     this.auth.isAuthenticated().subscribe({
@@ -19,5 +30,12 @@ export class AppComponent {
         this.isSigned = res
       }
     })
+  }
+
+  public signOut(): void {
+    this.auth.signOut()
+    .then(() => {
+      this.router.navigate(['/']);
+    });
   }
 }

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AuthService } from './services/auth/auth.service';
@@ -12,6 +13,7 @@ import { AuthService } from './services/auth/auth.service';
   ],
   imports: [
     CommonModule,
+    RouterModule
   ],
   providers: [AuthService],
   exports: [NavbarComponent]

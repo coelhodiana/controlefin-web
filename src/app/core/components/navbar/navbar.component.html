@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/">🤑 controlefin</a>
+    <a class="navbar-brand" routerLink="/">🤑 ostenta</a>
 
     <button
       class="navbar-toggler"
@@ -16,7 +16,7 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar__links">
         <div class="navbar-nav">
-          <div *ngIf="isSigned">
+          <div *ngIf="isAuthenticated">
             <button
               type="button"
               class="btn btn-light"
@@ -36,7 +36,7 @@
             <i class="{{ isDark ? 'bi bi-sun-fill' : 'bi bi-moon-fill' }}"></i>
           </a>
 
-          <div *ngIf="!isSigned">
+          <div *ngIf="!isAuthenticated">
             <button
               type="button"
               class="botao botao__light mr-2"
@@ -61,7 +61,7 @@
             class="botao botao__light"
             title="editar transação"
             (click)="signOut()"
-            *ngIf="isSigned"
+            *ngIf="isAuthenticated"
           >
             sair
             <i class="bi bi-box-arrow-right"></i>

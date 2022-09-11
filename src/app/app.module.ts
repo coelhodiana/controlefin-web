@@ -12,11 +12,12 @@ import { HomeComponent } from './pages/home/home.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { SharedModule } from './shared/shared.module';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 registerLocaleData(ptBr);
 
 @NgModule({
-  declarations: [AppComponent, SignUpComponent, SignInComponent, HomeComponent],
+  declarations: [AppComponent, SignUpComponent, SignInComponent, HomeComponent, ProfileComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
