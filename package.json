@@ -1,5 +1,5 @@
 {
-  "name": "controlefin",
+  "name": "ostenta",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -12,7 +12,7 @@
     "cy:run": "cypress run",
     "prepare": "husky install",
     "lint": "ng lint",
-    "deploy": "ng build --base-href=/controlefin-web/"
+    "deploy": "ng build --base-href=/ostenta/"
   },
   "private": true,
   "dependencies": {
