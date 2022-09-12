@@ -1,45 +1,29 @@
-@media (max-width: 768px) {
-  .navbar {
-    background-color: var(--background-color);
-  }
-}
-
 .navbar {
-  z-index: 1000;
-  width: 100vw;
-  top: 0;
-  display: flex;
-  justify-content: space-between;
+  background-color: var(--background-color);
 
-  .navbar-brand {
-    color: var(--text);
-  }
-
-  &__links {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .icon {
-    padding: 0 1rem;
-    margin-right: 0.5rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    background-color: var(--background-color);
-    border-radius: 3px;
-
+  &__menu-icon {
     i {
-      color: var(--text);
-      font-size: 1.2rem;
+      font-size: 2rem;
     }
   }
 
-  .icon:hover {
-    background-color: var(--background-color-hover);
+  &__theme-icon {
+    cursor: pointer;
+
+    i:hover {
+      color: var(--primary);
+    }
+  }
+
+  &__sair {
+    cursor: pointer;
+  }
+
+  &__sair:hover{
+    color: var(--primary)!important;
+
     i {
-      color: var(--text);
+      color: var(--primary)!important;
     }
   }
 }
