@@ -42,6 +42,8 @@ export class TransactionCreateEditComponent implements OnInit {
 
   ngOnInit() {
 
+    this.transactions.getTransactions().subscribe((res)=>console.log(res))
+
     this.transactionId = this.route.snapshot.params['id'];
 
     if (this.transactionId) {

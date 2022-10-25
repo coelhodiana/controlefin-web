@@ -19,17 +19,9 @@ export class AppComponent implements OnInit {
 
   public ngOnInit(): void {
     this.auth.isAuthenticated()
-    .subscribe((success: boolean) => {
+    .then((success: boolean) => {
       this.isAuthenticated = success;
     });
-  }
-
-  isSignedIn() {
-    this.auth.isAuthenticated().subscribe({
-      next: (res) => {
-        this.isSigned = res
-      }
-    })
   }
 
   public signOut(): void {

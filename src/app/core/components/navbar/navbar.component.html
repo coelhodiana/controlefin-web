@@ -14,7 +14,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active" *ngIf="isAuthenticated">
-        <a class="nav-link" routerLink="/dashboard">início</a>
+        <a class="nav-link" routerLink="/dashboard" routerLinkActive="active-link">início</a>
       </li>
     </ul>
     <ul class="navbar-nav">
@@ -27,10 +27,10 @@
         ></a>
       </li>
       <li class="nav-item" *ngIf="!isAuthenticated">
-        <a class="nav-link" routerLink="/cadastro">cadastro</a>
+        <a class="nav-link" routerLink="/cadastro" routerLinkActive="active-link">cadastro</a>
       </li>
       <li class="nav-item" *ngIf="!isAuthenticated">
-        <a class="nav-link" routerLink="/entrar">entrar</a>
+        <a class="nav-link" routerLink="/entrar" routerLinkActive="active-link">entrar</a>
       </li>
       <li class="nav-item" *ngIf="isAuthenticated">
         <a class="nav-link navbar__sair" (click)="signOut()">sair <i class="bi bi-box-arrow-right"></i></a>

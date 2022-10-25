@@ -1,16 +1,32 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import Amplify, { Auth } from 'aws-amplify';
 import { Observable, of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 import { Transaction } from './../../interfaces/transaction';
 
+const headers = new HttpHeaders().set('content-type', 'application/json');
 @Injectable({
   providedIn: 'root',
 })
 export class TransactionsService {
   localTransactions: Transaction[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    Amplify.configure({
+      Auth: environment.cognito,
+    });
+
+  }
+
+  getTransactions(): Observable<any> {
+
+    return this.http.get<any>(
+      'https://4i7p3xshu1.execute-api.us-east-1.amazonaws.com/dev/transaction',
+      { headers: headers }
+    );
+  }
 
   getTransaction(id: string): Observable<Transaction> {
     const transactions: Transaction[] = JSON.parse(
@@ -106,5 +122,5 @@ export class TransactionsService {
       'https://4i7p3xshu1.execute-api.us-east-1.amazonaws.com/dev/transaction',
       data
     );
-  };
-};
+  }
+}
