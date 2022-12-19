@@ -15,16 +15,14 @@ export interface IUser {
   providedIn: 'root',
 })
 export class AuthService {
-private tokenSubject = new BehaviorSubject<string | null>(null);
-  private authenticationSubject: BehaviorSubject<any>;
-  token$: Observable<any> = this.tokenSubject.asObservable();
+  private authenticationSubject = new BehaviorSubject<boolean>(false);
+
+  public isLoggedIn$: Observable<boolean> = this.authenticationSubject.asObservable();
 
   constructor(private router: Router) {
     Amplify.configure({
       Auth: environment.cognito,
     });
-
-    this.authenticationSubject = new BehaviorSubject<boolean>(false);
   }
 
   public signUp(user: IUser): Promise<any> {
@@ -46,8 +44,7 @@ private tokenSubject = new BehaviorSubject<string | null>(null);
   }
 
   public signOut(): Promise<any> {
-    return Auth.signOut()
-    .then(() => {
+    return Auth.signOut().then(() => {
       this.authenticationSubject.next(false);
     });
   }
@@ -57,20 +54,25 @@ private tokenSubject = new BehaviorSubject<string | null>(null);
       return Promise.resolve(true);
     } else {
       return this.getUser()
-      .then((user: any) => {
-        if (user) {
-          return true;
-        } else {
+        .then((user: any) => {
+          if (user) {
+            return true;
+          } else {
+            return false;
+          }
+        })
+        .catch(() => {
           return false;
-        }
-      }).catch(() => {
-        return false;
-      });
+        });
     }
   }
 
   public getUser(): Promise<any> {
     return Auth.currentUserInfo();
+  }
+
+  public getSession(): Promise<any> {
+    return Auth.currentSession();
   }
 
   public updateUser(user: IUser): Promise<any> {

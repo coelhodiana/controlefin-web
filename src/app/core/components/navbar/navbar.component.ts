@@ -1,34 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 import { AuthService } from './../../services/auth/auth.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
   isDark = false;
 
   isSigned = false;
 
-  isAuthenticated: boolean;
+  isAuthenticated = new BehaviorSubject<boolean>(false);
 
   constructor(private router: Router, public auth: AuthService) {
     this.setCurrentThemeMode();
-
-    this.isAuthenticated = false;
-
   }
 
   ngOnInit(): void {
-    this.auth.isAuthenticated()
-    .then((success: boolean) => {
-      this.isAuthenticated = success;
+    this.auth.isLoggedIn$.subscribe(() => {
+      this.auth.isAuthenticated().then((success: boolean) => {
+        this.isAuthenticated.next(success);
+      });
     });
   }
-
 
   setCurrentThemeMode() {
     if (!localStorage.getItem('isDark')) {
@@ -50,5 +48,4 @@ export class NavbarComponent implements OnInit {
       this.router.navigate(['/']);
     });
   }
-
 }

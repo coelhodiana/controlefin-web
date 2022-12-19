@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg">
-  <a class="navbar-brand" href="#">🤑 ostenta</a>
+  <a class="navbar-brand" [routerLink]="(isAuthenticated | async) ? '/dashboard': '' " >🤑 ostenta</a>
   <button
     class="navbar-toggler"
     type="button"
@@ -13,7 +13,7 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active" *ngIf="isAuthenticated">
+      <li class="nav-item active" *ngIf="isAuthenticated | async">
         <a class="nav-link" routerLink="/dashboard" routerLinkActive="active-link">início</a>
       </li>
     </ul>
@@ -26,13 +26,13 @@
           ><i class="{{ isDark ? 'bi bi-sun-fill' : 'bi bi-moon-fill' }}"></i
         ></a>
       </li>
-      <li class="nav-item" *ngIf="!isAuthenticated">
+      <li class="nav-item" *ngIf="(isAuthenticated | async) === false">
         <a class="nav-link" routerLink="/cadastro" routerLinkActive="active-link">cadastro</a>
       </li>
-      <li class="nav-item" *ngIf="!isAuthenticated">
+      <li class="nav-item" *ngIf="(isAuthenticated | async) === false">
         <a class="nav-link" routerLink="/entrar" routerLinkActive="active-link">entrar</a>
       </li>
-      <li class="nav-item" *ngIf="isAuthenticated">
+      <li class="nav-item" *ngIf="isAuthenticated | async">
         <a class="nav-link navbar__sair" (click)="signOut()">sair <i class="bi bi-box-arrow-right"></i></a>
       </li>
     </ul>
